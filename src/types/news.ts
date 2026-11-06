@@ -1,10 +1,19 @@
 export type NewsItem = {
   id: string;
-  title: string;          // headline
-  url: string;            // tautan ke media sumber
-  source: string;         // slug di sources.ts, mis. "kompas"
-  category: string[];     // slug di categories.ts
-  image?: string;         // thumbnail
-  excerpt?: string;       // ringkasan singkat (opsional)
-  publishedAt: string;    // ISO date
+  slug: string;
+  title: string;
+  /** Ringkasan singkat, bukan salinan isi artikel. */
+  excerpt: string;
+  /** Tautan ke artikel asli di situs media. */
+  url: string;
+  /** URL gambar. Jika kosong, dipakai siteConfig.placeholderImage. */
+  image?: string;
+  /** Format ISO 8601, misalnya "2026-11-05T08:00:00+07:00". */
+  publishedAt: string;
+  sourceSlug: string;
+  categorySlug: string;
+  /** Tampil di slider beranda. */
+  featured?: boolean;
+  /** Tampil di daftar populer. */
+  trending?: boolean;
 };

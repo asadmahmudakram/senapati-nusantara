@@ -3,56 +3,57 @@ import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import Pagination from "@/components/ui/Pagination";
 import HeadlineList from "@/components/home/HeadlineList";
-import { categories, categoryPath, findCategoryByPath, getCategoryTrail } from "@/data/categories";
-import { getByCategory, paginate, PER_PAGE } from "@/lib/news";
+import { getSource, sources } from "@/data/sources";
+import { getBySource, paginate, PER_PAGE } from "@/lib/news";
 import { parsePage } from "@/lib/utils";
 
 type Props = {
-  params: Promise<{ slug: string[] }>;
+  params: Promise<{ slug: string }>;
   searchParams: Promise<{ page?: string }>;
 };
 
 export function generateStaticParams() {
-  return categories.map((c) => ({ slug: categoryPath(c).split("/") }));
+  return sources.map((s) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const category = findCategoryByPath(slug);
-  if (!category) return {};
+  const source = getSource(slug);
+  if (!source) return {};
   return {
-    title: category.name,
-    description: category.description ?? `Berita terbaru kategori ${category.name}.`,
-    alternates: { canonical: `/kategori/${categoryPath(category)}` },
+    title: `Berita dari ${source.name}`,
+    description: `Headline terbaru dari ${source.name}, dengan tautan ke artikel asli.`,
+    alternates: { canonical: `/sumber/${source.slug}` },
   };
 }
 
-export default async function KategoriPage({ params, searchParams }: Props) {
+export default async function SumberPage({ params, searchParams }: Props) {
   const { slug } = await params;
   const { page } = await searchParams;
 
-  const category = findCategoryByPath(slug);
-  if (!category) notFound();
+  const source = getSource(slug);
+  if (!source) notFound();
 
-  const basePath = `/kategori/${categoryPath(category)}`;
-  const result = paginate(getByCategory(category.slug), parsePage(page), PER_PAGE);
-  const trail = getCategoryTrail(category).map((c) => ({
-    label: c.name,
-    href: `/kategori/${categoryPath(c)}`,
-  }));
+  const result = paginate(getBySource(source.slug), parsePage(page), PER_PAGE);
 
   return (
     <div className="container page">
-      <Breadcrumb items={[{ label: "Beranda", href: "/" }, ...trail.slice(0, -1), { label: category.name }]} />
-      <h1 className="page-title">{category.name}</h1>
-      {category.description && <p className="lead">{category.description}</p>}
+      <Breadcrumb items={[{ label: "Beranda", href: "/" }, { label: "Sumber" }, { label: source.name }]} />
+      <h1 className="page-title">{source.name}</h1>
+      <p className="lead">
+        Semua artikel mengarah ke situs asli{" "}
+        <a href={source.url} target="_blank" rel="noopener noreferrer">
+          {source.name}
+        </a>
+        .
+      </p>
 
       {result.items.length === 0 ? (
-        <p className="empty">Belum ada berita di kategori ini.</p>
+        <p className="empty">Belum ada berita dari sumber ini.</p>
       ) : (
         <>
           <HeadlineList items={result.items} />
-          <Pagination page={result.page} totalPages={result.totalPages} basePath={basePath} />
+          <Pagination page={result.page} totalPages={result.totalPages} basePath={`/sumber/${source.slug}`} />
         </>
       )}
     </div>
