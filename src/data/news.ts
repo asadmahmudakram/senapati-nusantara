@@ -6,6 +6,86 @@ import { getSource } from "@/data/sources";
  * mengarah ke beranda media. Ganti dengan data asli atau hasil sinkronisasi RSS (lib/feeds.ts).
  */
 
+/**
+ * BERITA YANG DIISI MANUAL. Tambahkan objek baru di bagian atas daftar ini.
+ * Selama daftar ini berisi minimal satu berita, berita contoh di bawah tidak ditampilkan.
+ * Aturan isi: excerpt ditulis sendiri (1 kalimat), url ke artikel asli, image dari halaman artikelnya.
+ */
+const manualNews: NewsItem[] = [
+  {
+    id: "cnbc-783480",
+    slug: "kejayaan-nvidia-runtuh-seketika-setelah-ceo-mengaku-selingkuh",
+    title: "Kejayaan Nvidia Runtuh Seketika Setelah CEO Mengaku Selingkuh",
+    excerpt: "Dewan komisaris Nvidia membuka penyelidikan independen atas CEO Jensen Huang, dan saham perusahaan melemah di perdagangan luar jam reguler.",
+    url: "https://www.cnbcindonesia.com/tech/20261109111306-37-783480/kejayaan-nvidia-runtuh-seketika-setelah-ceo-mengaku-selingkuh",
+    image: "https://awsimages.detik.net.id/visual/2026/11/09/ellis-huang-1794182202198_169.png?w=650&q=90",
+    publishedAt: "2026-11-09T12:05:00+07:00",
+    sourceSlug: "cnbc-indonesia",
+    categorySlug: "teknologi",
+  },
+  {
+    id: "antara-5840847",
+    slug: "batam-uji-coba-program-mbg-dengan-metode-prasmanan-pertama-di-kepri",
+    title: "Batam uji coba program MBG dengan metode prasmanan pertama di Kepri",
+    excerpt: "Sebuah sekolah dasar di Batam menjadi lokasi uji coba penyajian MBG model prasmanan pertama di Kepulauan Riau, berlangsung dua minggu.",
+    url: "https://www.antaranews.com/berita/5840847/batam-uji-coba-program-mbg-dengan-metode-prasmanan-pertama-di-kepri",
+    image: "https://img.antaranews.com/cache/1200x800/2026/11/09/IMG_6250.jpeg",
+    publishedAt: "2026-11-09T12:07:46+07:00",
+    sourceSlug: "antara",
+    categorySlug: "daerah",
+  },
+  {
+    id: "kompas-22344781",
+    slug: "sidang-ijazah-jokowi-memanas-dokter-tifa-protes-jatah-bertanya-hanya-30-menit",
+    title: "Sidang Ijazah Jokowi Memanas, Dokter Tifa Protes Jatah Bertanya Hanya 30 Menit",
+    excerpt: "Dokter Tifa memprotes pembatasan waktu bertanya dalam sidang yang berlangsung memanas.",
+    url: "https://megapolitan.kompas.com/read/2026/11/05/22344781/sidang-ijazah-jokowi-memanas-dokter-tifa-protes-jatah-bertanya-hanya-30",
+    publishedAt: "2026-11-05T22:34:00+07:00",
+    sourceSlug: "kompas",
+    categorySlug: "hukum",
+  },
+  {
+    id: "detik-8740541",
+    slug: "soroti-transkip-nilai-dr-tifa-pertanyakan-3-semester-kuliah-jokowi-di-ugm",
+    title: "Soroti Transkip Nilai, dr Tifa Pertanyakan 3 Semester Kuliah Jokowi di UGM",
+    excerpt: "Seusai sidang, dr Tifa menyampaikan pandangannya soal dokumen transkrip nilai dan riwayat kuliah Jokowi di UGM.",
+    url: "https://news.detik.com/berita/d-8740541/soroti-transkip-nilai-dr-tifa-pertanyakan-3-semester-kuliah-jokowi-di-ugm",
+    image: "https://awsimages.detik.net.id/community/media/visual/2026/11/05/jokowi-bawa-foto-dan-dokumen-saat-jadi-saksi-kasus-dokter-tifa-1793896750260_169.jpeg?w=700&q=90",
+    publishedAt: "2026-11-06T04:25:00+07:00",
+    sourceSlug: "detik",
+    categorySlug: "hukum",
+  },
+    {
+    id: "kompas-lestari-140100786",
+    slug: "saat-ai-mendorong-kebutuhan-listrik-mitsubishi-power-bersiap-menjawab-tantangan-baru",
+    title: "Saat AI Mendorong Kebutuhan Listrik, Mitsubishi Power Bersiap Menjawab Tantangan Baru",
+    excerpt: "Lonjakan kebutuhan listrik dari pusat data AI dan cara Mitsubishi Power menyiapkan teknologi pembangkitnya.",
+    url: "https://lestari.kompas.com/read/cm/2026/10/29/140100786/saat-ai-mendorong-kebutuhan-listrik-mitsubishi-power-bersiap-menjawab",
+    image: "https://asset.kompas.com/crops/C_YXtA-7b_Utbf59_HAwr05vYCU=/0x0:1536x1024/1200x675/data/photo/2026/10/28/6ae1e213c0ac9.png",
+    publishedAt: "2026-10-29T14:01:00+07:00",
+    sourceSlug: "kompas",
+    categorySlug: "bisnis",
+  },
+
+  // TEMPO: belum bisa diisi dari sini karena Tempo memblokir akses otomatis.
+  // Buka artikelnya, isi 3 bagian bertanda ISI, lalu hapus tanda komentar /* dan */.
+  /*
+  {
+    id: "tempo-2304081",
+    slug: "penyadapan-ilegal-sejumlah-kapolri",
+    title: "ISI judul persis dari halaman artikel",
+    excerpt: "ISI ringkasan satu kalimat dengan kata-kata Anda sendiri.",
+    url: "https://www.tempo.co/hukum/penyadapan-ilegal-sejumlah-kapolri-2304081",
+    image: "ISI alamat gambar (klik kanan gambar artikel, pilih salin alamat gambar)",
+    publishedAt: "ISI tanggal terbit, contoh 2026-11-09T10:00:00+07:00",
+    sourceSlug: "tempo",
+    categorySlug: "hukum",
+  },
+  */
+];
+
+/* ===== Berita contoh (otomatis disembunyikan jika manualNews terisi) ===== */
+
 const BASE_TIME = new Date("2026-11-05T08:00:00+07:00").getTime();
 
 const hoursAgo = (h: number) => new Date(BASE_TIME - h * 3_600_000).toISOString();
@@ -54,7 +134,7 @@ const seeds: Seed[] = [
   { title: "[Contoh] Atlet muda meraih medali di kejuaraan nasional", categorySlug: "olahraga", sourceSlug: "antara", hoursAgo: 44 },
 ];
 
-const seedNews: NewsItem[] = seeds.map((seed, i) => {
+const sampleNews: NewsItem[] = seeds.map((seed, i) => {
   const source = getSource(seed.sourceSlug);
   if (!source) throw new Error(`Sumber tidak dikenal di data/news.ts: ${seed.sourceSlug}`);
 
@@ -72,42 +152,6 @@ const seedNews: NewsItem[] = seeds.map((seed, i) => {
     featured: seed.featured,
     trending: seed.trending,
   };
-  
 });
-const realNews: NewsItem[] = [
-  {
-    id: "detik-8740537",
-    slug: "ajudan-jokowi-jadi-saksi-di-sidang-dr-tifa-12-november",
-    title: "Ajudan Jokowi Jadi Saksi di Sidang dr Tifa 12 November",
-    excerpt: "Majelis hakim menjadwalkan pemeriksaan ajudan Jokowi sebagai saksi pada lanjutan sidang pekan depan.",
-    url: "https://news.detik.com/berita/d-8740537/ajudan-jokowi-jadi-saksi-di-sidang-dr-tifa-12-november",
-    image: "https://awsimages.detik.net.id/community/media/visual/2026/07/23/sidang-dr-tifa-di-pn-jaktim-muliadetikcom-1784775725025_169.jpeg?w=700&q=90",
-    publishedAt: "2026-11-06T03:41:00+07:00",
-    sourceSlug: "detik",
-    categorySlug: "hukum",
-    featured: true,
-  },
-    {
-    id: "kompas-22344781",
-    slug: "sidang-ijazah-jokowi-memanas-dokter-tifa-protes-jatah-bertanya-hanya-30-menit",
-    title: "Sidang Ijazah Jokowi Memanas, Dokter Tifa Protes Jatah Bertanya Hanya 30 Menit",
-    excerpt: "Dokter Tifa memprotes pembatasan waktu bertanya dalam sidang yang berlangsung memanas.",
-    url: "https://megapolitan.kompas.com/read/2026/11/05/22344781/sidang-ijazah-jokowi-memanas-dokter-tifa-protes-jatah-bertanya-hanya-30?source=headline",
-    publishedAt: "2026-11-05T22:34:00+07:00",
-    sourceSlug: "kompas",
-    categorySlug: "hukum",
-  },
-    {
-    id: "detik-8740541",
-    slug: "soroti-transkip-nilai-dr-tifa-pertanyakan-3-semester-kuliah-jokowi-di-ugm",
-    title: "Soroti Transkip Nilai, dr Tifa Pertanyakan 3 Semester Kuliah Jokowi di UGM",
-    excerpt: "Seusai sidang, dr Tifa menyampaikan pandangannya soal dokumen transkrip nilai dan riwayat kuliah Jokowi di UGM.",
-    url: "https://news.detik.com/berita/d-8740541/soroti-transkip-nilai-dr-tifa-pertanyakan-3-semester-kuliah-jokowi-di-ugm",
-    image: "https://awsimages.detik.net.id/community/media/visual/2026/11/05/jokowi-bawa-foto-dan-dokumen-saat-jadi-saksi-kasus-dokter-tifa-1793896750260_169.jpeg?w=700&q=90",
-    publishedAt: "2026-11-06T04:25:00+07:00",
-    sourceSlug: "detik",
-    categorySlug: "hukum",
-  },
-];
 
-export const newsItems: NewsItem[] = [...realNews, ...seedNews];
+export const newsItems: NewsItem[] = manualNews.length > 0 ? manualNews : sampleNews;

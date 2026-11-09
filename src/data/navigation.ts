@@ -1,9 +1,10 @@
 import { categories, categoryPath } from "@/data/categories";
+import { sources } from "@/data/sources";
 
 export type NavItem = {
   label: string;
-  /** Harus halaman yang valid. Menu seluler memakainya untuk tautan "Semua ...". */
-  href: string;
+  /** Kosongkan untuk menu yang hanya membuka submenu (tanpa halaman sendiri). */
+  href?: string;
   children?: NavItem[];
 };
 
@@ -24,16 +25,22 @@ export const mainNav: NavItem[] = [
   { label: "Beranda", href: "/" },
   { label: "Berita", href: "/berita", children: categoryNav() },
   {
-    label: "Tentang",
+    label: "Media",
+    children: sources.map((s) => ({ label: s.name, href: `/sumber/${s.slug}` })),
+  },
+  {
+    label: "Tentang kami",
     href: "/tentang",
     children: [
       { label: "Kirim tautan", href: "/kirim-tautan" },
-      { label: "Kontak", href: "/kontak" },
+      { label: "Penafian", href: "/disclaimer" },
+      { label: "Kebijakan privasi", href: "/kebijakan-privasi" },
     ],
   },
+  { label: "Kontak", href: "/kontak" },
 ];
 
-export const footerNav: NavItem[] = [
+export const footerNav: { label: string; href: string }[] = [
   { label: "Semua berita", href: "/berita" },
   { label: "Tentang kami", href: "/tentang" },
   { label: "Kirim tautan", href: "/kirim-tautan" },

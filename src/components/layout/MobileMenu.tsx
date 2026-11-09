@@ -9,18 +9,18 @@ function MobileList({ items }: { items: NavItem[] }) {
   return (
     <ul className="mobile-list">
       {items.map((item) => (
-        <li key={`${item.href}-${item.label}`}>
+        <li key={`${item.href ?? ""}-${item.label}`}>
           {item.children?.length ? (
             <details>
               <summary>{item.label}</summary>
               <div className="mobile-sub">
-                {item.href !== "#" && <Link href={item.href}>Semua {item.label}</Link>}
+                {item.href && <Link href={item.href}>Semua {item.label}</Link>}
                 <MobileList items={item.children} />
               </div>
             </details>
-          ) : (
+          ) : item.href ? (
             <Link href={item.href}>{item.label}</Link>
-          )}
+          ) : null}
         </li>
       ))}
     </ul>
@@ -30,17 +30,15 @@ function MobileList({ items }: { items: NavItem[] }) {
 type Props = { items: NavItem[]; children?: ReactNode };
 
 export default function MobileMenu({ items, children }: Props) {
-  const [open, setOpen] = useState(false);
+  // Menu dianggap terbuka hanya selama halaman yang sama, jadi otomatis menutup saat pindah halaman.
   const pathname = usePathname();
-
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+  const [openAt, setOpenAt] = useState<string | null>(null);
+  const open = openAt === pathname;
 
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") setOpenAt(null);
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
@@ -53,7 +51,7 @@ export default function MobileMenu({ items, children }: Props) {
         className="mobile-menu__toggle"
         aria-expanded={open}
         aria-controls="panel-menu"
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => setOpenAt(open ? null : pathname)}
       >
         {open ? "Tutup" : "Menu"}
       </button>
