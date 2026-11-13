@@ -21,9 +21,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const source = getSource(slug);
   if (!source) return {};
   return {
-    title: `Berita dari ${source.name}`,
-    description: `Headline terbaru dari ${source.name}, dengan tautan ke artikel asli.`,
+    title: `Berita ${source.name} terbaru`,
+    description: `Baca headline terbaru dari ${source.name}, lengkap dengan tautan ke sumber asli dan rangkuman berita terkini.`,
     alternates: { canonical: `/sumber/${source.slug}` },
+    openGraph: {
+      title: `Berita ${source.name} terbaru`,
+      description: `Headline terbaru dari ${source.name} dengan tautan ke artikel asli.`,
+      url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"}/sumber/${source.slug}`,
+      type: "website",
+    },
   };
 }
 

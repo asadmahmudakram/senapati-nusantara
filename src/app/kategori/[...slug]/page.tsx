@@ -21,9 +21,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const category = findCategoryByPath(slug);
   if (!category) return {};
   return {
-    title: category.name,
-    description: category.description ?? `Berita terbaru kategori ${category.name}.`,
+    title: `${category.name} – Berita terbaru`,
+    description:
+      category.description ?? `Baca berita terbaru seputar ${category.name} dari berbagai sumber terpercaya dan update terkini.`,
     alternates: { canonical: `/kategori/${categoryPath(category)}` },
+    openGraph: {
+      title: `${category.name} – Berita terbaru`,
+      description: category.description ?? `Berita terbaru tentang ${category.name}.`,
+      url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"}/kategori/${categoryPath(category)}`,
+      type: "website",
+    },
   };
 }
 
