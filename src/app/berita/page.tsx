@@ -2,13 +2,22 @@ import type { Metadata } from "next";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import Pagination from "@/components/ui/Pagination";
 import HeadlineList from "@/components/home/HeadlineList";
+import { siteConfig } from "@/data/site";
 import { getAllNews, paginate, PER_PAGE } from "@/lib/news";
 import { parsePage } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Semua berita",
-  description: "Kumpulan headline terbaru dari berbagai media nasional dan daerah.",
+  title: "Semua berita terkini",
+  description:
+    "Lihat kumpulan headline terbaru dari berbagai media nasional dan daerah, lengkap dengan ringkasan dan tautan ke sumber asli.",
   alternates: { canonical: "/berita" },
+  openGraph: {
+    title: "Semua berita terkini",
+    description:
+      "Jelajahi headline terbaru dari berbagai media nasional dan daerah di Senapati Nusantara.",
+    url: `${siteConfig.url}/berita`,
+    type: "website",
+  },
 };
 
 type Props = { searchParams: Promise<{ page?: string }> };

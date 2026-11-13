@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import HeroSlider from "@/components/home/HeroSlider";
 import HeadlineList from "@/components/home/HeadlineList";
@@ -5,6 +6,20 @@ import TrendingList from "@/components/home/TrendingList";
 import CategoryBlock from "@/components/home/CategoryBlock";
 import { siteConfig } from "@/data/site";
 import { getCategoryBlocks, getFeatured, getLatest, getTrending } from "@/lib/news";
+
+export const metadata: Metadata = {
+  title: `${siteConfig.name} – ${siteConfig.tagline}`,
+  description:
+    "Portal berita Indonesia yang menghadirkan headline terbaru, pilihan redaksi, dan ringkasan dari berbagai sumber nasional dan daerah.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: `${siteConfig.name} – ${siteConfig.tagline}`,
+    description:
+      "Cek berita terbaru, kategori populer, dan pilihan redaksi dari seluruh Nusantara.",
+    url: siteConfig.url,
+    type: "website",
+  },
+};
 
 export default function HomePage() {
   const slides = getFeatured(5);
