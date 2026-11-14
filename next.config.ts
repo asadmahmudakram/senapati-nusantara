@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [{ protocol: "https", hostname: "**" }],
+  },
   reactStrictMode: true,
   poweredByHeader: false,
   // Hanya untuk membuka server dev dari HP. Ganti dengan IP laptop Anda, atau hapus bila tidak dipakai.

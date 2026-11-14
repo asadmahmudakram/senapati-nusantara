@@ -4,7 +4,7 @@ import "./globals.css";
 import { siteConfig } from "@/data/site";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import Splash from "@/components/ui/Splash";
+
 
 const display = Bricolage_Grotesque({
   subsets: ["latin"],

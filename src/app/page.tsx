@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import HeroSlider from "@/components/home/HeroSlider";
+import HeroBanner from "@/components/home/HeroBanner";
+import StoryCard from "@/components/home/StoryCard";
 import HeadlineList from "@/components/home/HeadlineList";
 import TrendingList from "@/components/home/TrendingList";
 import CategoryBlock from "@/components/home/CategoryBlock";
+import SidebarCard from "@/components/layout/Sidebar";
 import { siteConfig } from "@/data/site";
-import { getCategoryBlocks, getFeatured, getLatest, getTrending } from "@/lib/news";
+import { getCategoryBlocks, getLatest, getTrending } from "@/lib/news";
 
 export const metadata: Metadata = {
   title: `${siteConfig.name} – ${siteConfig.tagline}`,
@@ -22,9 +24,18 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  const slides = getFeatured(5);
-  const latest = getLatest(12);
-  const picks = getTrending(8);
+  const pool = getLatest(30);
+
+  // Dua kartu teratas diutamakan dari berita yang punya gambar
+  const withImage = pool.filter((n) => n.image);
+  const lead = withImage[0] ?? pool[0];
+  const side = withImage[1] ?? pool[1];
+  const taken = new Set([lead?.id, side?.id]);
+  const rest = pool.filter((n) => !taken.has(n.id));
+
+  const row = rest.slice(0, 3);
+  const more = rest.slice(3, 15);
+  const trending = getTrending(8);
   const blocks = getCategoryBlocks(3, 4);
 
   return (
@@ -32,23 +43,47 @@ export default function HomePage() {
       <h1 className="sr-only">
         {siteConfig.name}: {siteConfig.tagline}
       </h1>
-      <HeroSlider items={slides} />
 
-      <div className={`container layout-main${picks.length > 0 ? "" : " layout-main--single"}`}>
-        <section aria-labelledby="terbaru">
-          <div className="section-head">
-            <h2 id="terbaru">Headline terbaru</h2>
-            <Link href="/berita">Lihat semua berita</Link>
+      <HeroBanner />
+
+      <div className="container home-stories">
+        <div className="section-head">
+          <h2>Berita terbaru</h2>
+          <Link href="/berita">Lihat semua berita</Link>
+        </div>
+
+        {lead && (
+          <div className="story-feature">
+            <StoryCard item={lead} size="lead" priority />
+            {side && <StoryCard item={side} size="side" />}
           </div>
-          <HeadlineList items={latest} />
+        )}
+
+        {row.length > 0 && (
+          <div className="story-grid">
+            {row.map((item) => (
+              <StoryCard key={item.id} item={item} size="grid" />
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div
+        className={`container layout-main${trending.length > 0 ? "" : " layout-main--single"}`}
+      >
+        <section aria-labelledby="liputan">
+          <div className="section-head">
+            <h2 id="liputan">Liputan lainnya</h2>
+            <Link href="/berita">Lihat semua</Link>
+          </div>
+          <HeadlineList items={more} />
         </section>
 
-        {picks.length > 0 && (
-          <aside aria-labelledby="pilihan">
-            <div className="section-head">
-              <h2 id="pilihan">Pilihan redaksi</h2>
-            </div>
-            <TrendingList items={picks} />
+        {trending.length > 0 && (
+          <aside className="page__sidebar" aria-label="Paling banyak dibaca">
+            <SidebarCard title="Paling banyak dibaca">
+              <TrendingList items={trending} />
+            </SidebarCard>
           </aside>
         )}
       </div>

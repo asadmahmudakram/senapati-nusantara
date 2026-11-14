@@ -1,5 +1,5 @@
 import type { NewsItem } from "@/types/news";
-import NewsCard from "@/components/news/NewsCard";
+import StoryCard from "@/components/home/StoryCard";
 
 export default function HeadlineList({ items }: { items: NewsItem[] }) {
   if (items.length === 0) {
@@ -10,7 +10,7 @@ export default function HeadlineList({ items }: { items: NewsItem[] }) {
     <ul className="headline-list">
       {items.map((item, i) => (
         <li key={item.id}>
-          <NewsCard item={item} priority={i < 2} />
+          <StoryCard item={item} size="grid" priority={i < 2} />
         </li>
       ))}
     </ul>

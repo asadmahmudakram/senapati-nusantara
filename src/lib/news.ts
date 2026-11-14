@@ -5,6 +5,7 @@ import { newsItems } from "@/data/news";
 import { getSource } from "@/data/sources";
 import { getFeedItems } from "@/lib/feeds";
 
+
 export const PER_PAGE = 12;
 
 /** Awalan id untuk berita contoh di data/news.ts. */

@@ -1,23 +1,34 @@
 import type { Category } from "@/types/category";
 
 export const categories: Category[] = [
-  { slug: "nasional", name: "Nasional", description: "Perkembangan terbaru dari pusat pemerintahan dan isu nasional." },
-  { slug: "politik", name: "Politik", parentSlug: "nasional", description: "Dinamika politik, parlemen, dan partai." },
-  { slug: "hukum", name: "Hukum", parentSlug: "nasional", description: "Peradilan, penegakan hukum, dan regulasi." },
-
-  { slug: "ekonomi", name: "Ekonomi", description: "Kabar ekonomi, dunia usaha, dan keuangan." },
-  { slug: "bisnis", name: "Bisnis", parentSlug: "ekonomi", description: "Industri, perdagangan, dan UMKM." },
-  { slug: "keuangan", name: "Keuangan", parentSlug: "ekonomi", description: "Pasar modal, perbankan, dan nilai tukar." },
-
-  { slug: "daerah", name: "Daerah", description: "Berita dari berbagai provinsi, kabupaten, dan kota." },
-  { slug: "internasional", name: "Internasional", description: "Peristiwa dunia dan hubungan luar negeri." },
-  { slug: "teknologi", name: "Teknologi", description: "Gawai, internet, dan inovasi." },
-  { slug: "olahraga", name: "Olahraga", description: "Hasil pertandingan dan kabar atlet." },
-  { slug: "hiburan", name: "Hiburan", description: "Film, musik, dan budaya populer." },
-  { slug: "gaya-hidup", name: "Gaya hidup", description: "Kesehatan, kuliner, dan keseharian." },
+  {
+    slug: "review-media",
+    name: "Review Media",
+    description:
+      "Ulasan dan liputan media tentang kegiatan Senapati Nusantara.",
+  },
+  {
+    slug: "link-berita",
+    name: "Link Berita",
+    description:
+      "Tautan berita tentang Senapati Nusantara dari berbagai media.",
+  },
 ];
 
 const bySlug = new Map(categories.map((c) => [c.slug, c]));
+
+if (process.env.NODE_ENV !== "production") {
+  const seen = new Set<string>();
+  for (const c of categories) {
+    if (seen.has(c.slug)) throw new Error(`Slug kategori ganda: ${c.slug}`);
+    seen.add(c.slug);
+    if (c.parentSlug && !bySlug.has(c.parentSlug)) {
+      throw new Error(
+        `parentSlug tidak ditemukan: ${c.parentSlug} (di ${c.slug})`,
+      );
+    }
+  }
+}
 
 export function getCategory(slug: string): Category | undefined {
   return bySlug.get(slug);
@@ -36,14 +47,14 @@ export function getCategoryTrail(category: Category): Category[] {
   return trail;
 }
 
-/** Contoh: "nasional/politik". Dipakai untuk URL /kategori/... */
+/** Contoh: "review-media". Untuk kategori bertingkat: "induk/anak". Dipakai untuk URL /kategori/... */
 export function categoryPath(category: Category): string {
   return getCategoryTrail(category)
     .map((c) => c.slug)
     .join("/");
 }
 
-/** Mengembalikan kategori hanya jika seluruh jalurnya cocok (nasional/politik, bukan ekonomi/politik). */
+/** Mengembalikan kategori hanya jika seluruh jalurnya cocok dengan susunan induk dan anaknya. */
 export function findCategoryByPath(segments: string[]): Category | undefined {
   const leaf = bySlug.get(segments[segments.length - 1]);
   if (!leaf) return undefined;
@@ -58,5 +69,8 @@ export function getChildCategories(slug: string): Category[] {
 
 /** Slug kategori itu sendiri ditambah seluruh turunannya. Dipakai untuk menyaring berita. */
 export function getDescendantSlugs(slug: string): string[] {
-  return [slug, ...getChildCategories(slug).flatMap((c) => getDescendantSlugs(c.slug))];
+  return [
+    slug,
+    ...getChildCategories(slug).flatMap((c) => getDescendantSlugs(c.slug)),
+  ];
 }

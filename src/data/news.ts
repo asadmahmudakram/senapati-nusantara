@@ -1,157 +1,321 @@
 import type { NewsItem } from "@/types/news";
 import { getSource } from "@/data/sources";
+import { generatedGroups } from "./liputan.generated";
+import { manualItems } from "./liputan.manual";
+import metaJson from "./liputan.meta.json";
 
-/**
- * DATA CONTOH untuk pengembangan. Judulnya sengaja diawali "[Contoh]" dan semua tautan
- * mengarah ke beranda media. Ganti dengan data asli atau hasil sinkronisasi RSS (lib/feeds.ts).
- */
-
-/**
- * BERITA YANG DIISI MANUAL. Tambahkan objek baru di bagian atas daftar ini.
- * Selama daftar ini berisi minimal satu berita, berita contoh di bawah tidak ditampilkan.
- * Aturan isi: excerpt ditulis sendiri (1 kalimat), url ke artikel asli, image dari halaman artikelnya.
- */
-const manualNews: NewsItem[] = [
-  {
-    id: "cnbc-783480",
-    slug: "kejayaan-nvidia-runtuh-seketika-setelah-ceo-mengaku-selingkuh",
-    title: "Kejayaan Nvidia Runtuh Seketika Setelah CEO Mengaku Selingkuh",
-    excerpt: "Dewan komisaris Nvidia membuka penyelidikan independen atas CEO Jensen Huang, dan saham perusahaan melemah di perdagangan luar jam reguler.",
-    url: "https://www.cnbcindonesia.com/tech/20261109111306-37-783480/kejayaan-nvidia-runtuh-seketika-setelah-ceo-mengaku-selingkuh",
-    image: "https://awsimages.detik.net.id/visual/2026/11/09/ellis-huang-1794182202198_169.png?w=650&q=90",
-    publishedAt: "2026-11-09T12:05:00+07:00",
-    sourceSlug: "cnbc-indonesia",
-    categorySlug: "teknologi",
-  },
-  {
-    id: "antara-5840847",
-    slug: "batam-uji-coba-program-mbg-dengan-metode-prasmanan-pertama-di-kepri",
-    title: "Batam uji coba program MBG dengan metode prasmanan pertama di Kepri",
-    excerpt: "Sebuah sekolah dasar di Batam menjadi lokasi uji coba penyajian MBG model prasmanan pertama di Kepulauan Riau, berlangsung dua minggu.",
-    url: "https://www.antaranews.com/berita/5840847/batam-uji-coba-program-mbg-dengan-metode-prasmanan-pertama-di-kepri",
-    image: "https://img.antaranews.com/cache/1200x800/2026/11/09/IMG_6250.jpeg",
-    publishedAt: "2026-11-09T12:07:46+07:00",
-    sourceSlug: "antara",
-    categorySlug: "daerah",
-  },
-  {
-    id: "kompas-22344781",
-    slug: "sidang-ijazah-jokowi-memanas-dokter-tifa-protes-jatah-bertanya-hanya-30-menit",
-    title: "Sidang Ijazah Jokowi Memanas, Dokter Tifa Protes Jatah Bertanya Hanya 30 Menit",
-    excerpt: "Dokter Tifa memprotes pembatasan waktu bertanya dalam sidang yang berlangsung memanas.",
-    url: "https://megapolitan.kompas.com/read/2026/11/05/22344781/sidang-ijazah-jokowi-memanas-dokter-tifa-protes-jatah-bertanya-hanya-30",
-    publishedAt: "2026-11-05T22:34:00+07:00",
-    sourceSlug: "kompas",
-    categorySlug: "hukum",
-  },
-  {
-    id: "detik-8740541",
-    slug: "soroti-transkip-nilai-dr-tifa-pertanyakan-3-semester-kuliah-jokowi-di-ugm",
-    title: "Soroti Transkip Nilai, dr Tifa Pertanyakan 3 Semester Kuliah Jokowi di UGM",
-    excerpt: "Seusai sidang, dr Tifa menyampaikan pandangannya soal dokumen transkrip nilai dan riwayat kuliah Jokowi di UGM.",
-    url: "https://news.detik.com/berita/d-8740541/soroti-transkip-nilai-dr-tifa-pertanyakan-3-semester-kuliah-jokowi-di-ugm",
-    image: "https://awsimages.detik.net.id/community/media/visual/2026/11/05/jokowi-bawa-foto-dan-dokumen-saat-jadi-saksi-kasus-dokter-tifa-1793896750260_169.jpeg?w=700&q=90",
-    publishedAt: "2026-11-06T04:25:00+07:00",
-    sourceSlug: "detik",
-    categorySlug: "hukum",
-  },
-    {
-    id: "kompas-lestari-140100786",
-    slug: "saat-ai-mendorong-kebutuhan-listrik-mitsubishi-power-bersiap-menjawab-tantangan-baru",
-    title: "Saat AI Mendorong Kebutuhan Listrik, Mitsubishi Power Bersiap Menjawab Tantangan Baru",
-    excerpt: "Lonjakan kebutuhan listrik dari pusat data AI dan cara Mitsubishi Power menyiapkan teknologi pembangkitnya.",
-    url: "https://lestari.kompas.com/read/cm/2026/10/29/140100786/saat-ai-mendorong-kebutuhan-listrik-mitsubishi-power-bersiap-menjawab",
-    image: "https://asset.kompas.com/crops/C_YXtA-7b_Utbf59_HAwr05vYCU=/0x0:1536x1024/1200x675/data/photo/2026/10/28/6ae1e213c0ac9.png",
-    publishedAt: "2026-10-29T14:01:00+07:00",
-    sourceSlug: "kompas",
-    categorySlug: "bisnis",
-  },
-
-  // TEMPO: belum bisa diisi dari sini karena Tempo memblokir akses otomatis.
-  // Buka artikelnya, isi 3 bagian bertanda ISI, lalu hapus tanda komentar /* dan */.
-  /*
-  {
-    id: "tempo-2304081",
-    slug: "penyadapan-ilegal-sejumlah-kapolri",
-    title: "ISI judul persis dari halaman artikel",
-    excerpt: "ISI ringkasan satu kalimat dengan kata-kata Anda sendiri.",
-    url: "https://www.tempo.co/hukum/penyadapan-ilegal-sejumlah-kapolri-2304081",
-    image: "ISI alamat gambar (klik kanan gambar artikel, pilih salin alamat gambar)",
-    publishedAt: "ISI tanggal terbit, contoh 2026-11-09T10:00:00+07:00",
-    sourceSlug: "tempo",
-    categorySlug: "hukum",
-  },
-  */
-];
-
-/* ===== Berita contoh (otomatis disembunyikan jika manualNews terisi) ===== */
-
-const BASE_TIME = new Date("2026-11-05T08:00:00+07:00").getTime();
-
-const hoursAgo = (h: number) => new Date(BASE_TIME - h * 3_600_000).toISOString();
-
-const slugify = (text: string) =>
-  text
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-
-type Seed = {
-  title: string;
-  categorySlug: string;
+type RawItem = {
   sourceSlug: string;
-  hoursAgo: number;
-  featured?: boolean;
-  trending?: boolean;
+  date: string;
+  title: string;
+  url: string;
+  image?: string;
+  excerpt?: string;
 };
 
-const seeds: Seed[] = [
-  { title: "[Contoh] Sidang paripurna bahas rancangan anggaran", categorySlug: "politik", sourceSlug: "kompas", hoursAgo: 1, featured: true, trending: true },
-  { title: "[Contoh] Penegak hukum periksa sejumlah saksi kasus korupsi daerah", categorySlug: "hukum", sourceSlug: "tempo", hoursAgo: 2, featured: true },
-  { title: "[Contoh] Rupiah bergerak terbatas di awal pekan", categorySlug: "keuangan", sourceSlug: "cnbc-indonesia", hoursAgo: 3, featured: true, trending: true },
-  { title: "[Contoh] Pemerintah daerah siapkan program perbaikan jalan", categorySlug: "daerah", sourceSlug: "antara", hoursAgo: 4, featured: true },
-  { title: "[Contoh] Startup lokal luncurkan layanan berbasis kecerdasan buatan", categorySlug: "teknologi", sourceSlug: "kumparan", hoursAgo: 5, featured: true, trending: true },
-  { title: "[Contoh] Timnas bersiap menghadapi laga persahabatan", categorySlug: "olahraga", sourceSlug: "detik", hoursAgo: 6, trending: true },
-  { title: "[Contoh] Festival film daerah kembali digelar", categorySlug: "hiburan", sourceSlug: "liputan6", hoursAgo: 7 },
-  { title: "[Contoh] Tips menjaga pola tidur di musim hujan", categorySlug: "gaya-hidup", sourceSlug: "kompas", hoursAgo: 8 },
-  { title: "[Contoh] Pertemuan regional bahas kerja sama perdagangan", categorySlug: "internasional", sourceSlug: "cnn-indonesia", hoursAgo: 9, trending: true },
-  { title: "[Contoh] Pelaku usaha kecil mendapat pelatihan digital", categorySlug: "bisnis", sourceSlug: "bisnis", hoursAgo: 10 },
-  { title: "[Contoh] Partai gelar konsolidasi menjelang tahun politik", categorySlug: "politik", sourceSlug: "tribunnews", hoursAgo: 11 },
-  { title: "[Contoh] Mahkamah gelar sidang uji materi undang-undang", categorySlug: "hukum", sourceSlug: "antara", hoursAgo: 12, trending: true },
-  { title: "[Contoh] Pemerintah pusat luncurkan program layanan terpadu", categorySlug: "nasional", sourceSlug: "kompas", hoursAgo: 13 },
-  { title: "[Contoh] Inflasi bulanan tercatat stabil", categorySlug: "ekonomi", sourceSlug: "republika", hoursAgo: 14 },
-  { title: "[Contoh] Bank sentral pertahankan suku bunga acuan", categorySlug: "keuangan", sourceSlug: "cnbc-indonesia", hoursAgo: 15 },
-  { title: "[Contoh] Pasar tradisional dipadati pembeli jelang akhir pekan", categorySlug: "daerah", sourceSlug: "tribunnews", hoursAgo: 16 },
-  { title: "[Contoh] Peneliti kembangkan baterai berbiaya rendah", categorySlug: "teknologi", sourceSlug: "tempo", hoursAgo: 18 },
-  { title: "[Contoh] Klub tuan rumah menang tipis di kandang", categorySlug: "olahraga", sourceSlug: "kumparan", hoursAgo: 20 },
-  { title: "[Contoh] Konser amal kumpulkan dana pendidikan", categorySlug: "hiburan", sourceSlug: "detik", hoursAgo: 22 },
-  { title: "[Contoh] Resep sarapan sehat dari bahan lokal", categorySlug: "gaya-hidup", sourceSlug: "liputan6", hoursAgo: 24 },
-  { title: "[Contoh] Delegasi bahas isu perubahan iklim di forum dunia", categorySlug: "internasional", sourceSlug: "antara", hoursAgo: 27 },
-  { title: "[Contoh] Ekspor produk pertanian naik pada kuartal ini", categorySlug: "bisnis", sourceSlug: "bisnis", hoursAgo: 30 },
-  { title: "[Contoh] Komisi dewan undang pakar bahas kebijakan pendidikan", categorySlug: "politik", sourceSlug: "media-indonesia", hoursAgo: 33 },
-  { title: "[Contoh] Warga bergotong royong membersihkan sungai", categorySlug: "daerah", sourceSlug: "republika", hoursAgo: 36 },
-  { title: "[Contoh] Aplikasi layanan publik menambah fitur baru", categorySlug: "teknologi", sourceSlug: "detik", hoursAgo: 40 },
-  { title: "[Contoh] Atlet muda meraih medali di kejuaraan nasional", categorySlug: "olahraga", sourceSlug: "antara", hoursAgo: 44 },
+type RawGroup = {
+  slug: string;
+  categorySlug: string;
+  items: readonly RawItem[];
+};
+
+type Meta = Record<string, { excerpt?: string; image?: string }>;
+
+const groups: readonly RawGroup[] = generatedGroups;
+const meta = metaJson as Meta;
+
+/** Kategori untuk item manual yang tidak ada di dokumen Word. */
+const MANUAL = { slug: "liputan-manual", categorySlug: "budaya" };
+const FALLBACK_TITLE = "Liputan Senapati Nusantara";
+
+/* ------------------------------------------------------------------ */
+/* Pembersih teks                                                       */
+/* ------------------------------------------------------------------ */
+
+const NAMED: Record<string, string> = {
+  amp: "&",
+  quot: '"',
+  apos: "'",
+  lt: "<",
+  gt: ">",
+  nbsp: " ",
+};
+
+/** "&amp;" jadi "&", "&#187;" jadi "»". Satu langkah, jadi tidak terdekode dua kali. */
+function decodeEntities(text: string): string {
+  return text.replace(
+    /&(#x[0-9a-f]+|#\d+|amp|quot|apos|lt|gt|nbsp);/gi,
+    (match, body: string) => {
+      const b = body.toLowerCase();
+      if (b.startsWith("#x"))
+        return String.fromCodePoint(parseInt(b.slice(2), 16));
+      if (b.startsWith("#")) return String.fromCodePoint(Number(b.slice(1)));
+      return NAMED[b] ?? match;
+    },
+  );
+}
+
+/** Judul pengganti yang tertangkap saat scraper diblokir. Bukan judul berita. */
+const BAD_TITLE: RegExp[] = [
+  /^just a moment/i,
+  /^attention required/i,
+  /^security verification/i,
+  /^site ready/i,
+  /^blank page/i,
+  /^(home|msn|rejogja)\b/i,
+  /^yahoo search/i,
+  /^(404|403)\b/i,
+  /^error 4\d\d/i,
+  /not found/i,
+  /tidak ditemukan/i,
+  /nothing here/i,
+];
+const isBadTitle = (title: string) =>
+  BAD_TITLE.some((re) => re.test(title.trim()));
+
+const SEPARATOR = /\s+[-–—]\s+|\s*\|\s*|\s+»\s+/g;
+
+/** Membuang nama situs di ujung judul: "Judul - Harian Merapi". */
+function stripSiteSuffix(title: string): string {
+  let t = title;
+  for (let i = 0; i < 2; i++) {
+    const last = [...t.matchAll(SEPARATOR)].pop();
+    if (!last || last.index === undefined) break;
+    const head = t.slice(0, last.index).trim();
+    const tail = t.slice(last.index + last[0].length).trim();
+    const short =
+      tail.length > 0 && tail.length <= 45 && tail.split(/\s+/).length <= 6;
+    if (!short || head.length < 15) break;
+    t = head;
+  }
+  return t;
+}
+
+function cleanTitle(raw: string): string {
+  return stripSiteSuffix(decodeEntities(raw).trim())
+    .replace(/^#+\s*/, "")
+    .replace(/\s+\d{5,}$/, "")
+    .trim();
+}
+
+/** Penanda lokasi di awal berita: "Bantul – ", "TEMPO.CO, Jakarta – ". Dibuang agar kartu lebih bersih. */
+const DATELINE = /^[^–—:]{2,45}?\s[–—]\s+/;
+
+function cleanExcerpt(raw?: string): string {
+  if (!raw) return "";
+  let t = decodeEntities(raw).replace(/\s+/g, " ").trim();
+  const m = t.match(DATELINE);
+  if (m && m[0].trim().split(/\s+/).length <= 6) t = t.slice(m[0].length);
+  return t.length >= 30 ? t : "";
+}
+
+/* ------------------------------------------------------------------ */
+/* Pembersih URL dan gambar                                             */
+/* ------------------------------------------------------------------ */
+
+/** Parameter pelacak (utm_*) dibuang supaya tautan bersih. */
+function cleanUrl(raw: string): string {
+  try {
+    const u = new URL(raw);
+    for (const key of [...u.searchParams.keys()]) {
+      if (key.startsWith("utm_")) u.searchParams.delete(key);
+    }
+    return u.toString();
+  } catch {
+    return raw;
+  }
+}
+
+/** Kunci pembanding antar sumber data: tanpa "www.", query, hash, dan garis miring akhir. */
+function urlKey(raw: string): string {
+  try {
+    const u = new URL(raw);
+    return `${u.hostname.replace(/^www\./, "")}${u.pathname.replace(/\/+$/, "")}`.toLowerCase();
+  } catch {
+    return raw.replace(/\/+$/, "").toLowerCase();
+  }
+}
+
+/** Logo, favicon, gambar bawaan situs, dan gambar yang salah artikel. */
+const BAD_IMAGE = /(logo|favicon|default[_-]?image|portalmadura\.webp|agnez)/i;
+
+function cleanImage(raw?: string): string | undefined {
+  if (!raw) return undefined;
+  let url = raw.trim();
+  if (!/^https?:\/\//.test(url)) return undefined;
+  if (BAD_IMAGE.test(url)) return undefined;
+  if (url.endsWith(".")) return undefined; // URL terpotong
+  // Kumparan menempelkan tulisan "Konten Media Partner" lewat transformasi gambar. Dibuang.
+  url = url.replace(
+    /\/g_south,l_og_media_partner_[^/]+\/co_rgb:[^/]+(?=\/v\d+\/)/,
+    "",
+  );
+  return url;
+}
+
+/** Cadangan terakhir untuk judul: susun dari slug URL. */
+function titleFromUrl(url: string): string {
+  try {
+    const { pathname } = new URL(url);
+    const segment = pathname
+      .split("/")
+      .filter((s) => s.includes("-"))
+      .sort((a, b) => b.length - a.length)[0];
+    if (!segment) return "";
+    return decodeURIComponent(segment)
+      .replace(/\.html?$/i, "")
+      .replace(/-\d{5,}$/, "")
+      .replace(/^\d+-/, "")
+      .split("-")
+      .filter(Boolean)
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(" ");
+  } catch {
+    return "";
+  }
+}
+
+/** Tanggal tanpa zona waktu ("2022-10-14T21:45") dianggap WIB. Tanggal saja dibiarkan. */
+function normalizeDate(value: string): string {
+  return /T\d{2}:\d{2}$/.test(value) ? `${value}:00+07:00` : value;
+}
+
+/**
+ * Keterangan cadangan untuk berita yang belum punya deskripsi.
+ * Berdasarkan pengelompokan acara di liputan.ts. Hapus fungsi ini kalau tidak diinginkan.
+ */
+function fallbackExcerpt(date: string): string {
+  const d = date.slice(0, 10);
+  if (d >= "2022-09-01" && d <= "2022-09-15")
+    return "Liputan jelang Musyawarah Agung Senapati (MAS) #2 di Yogyakarta, 16–18 September 2022.";
+  if (d >= "2022-09-16" && d <= "2022-09-30")
+    return "Liputan pembukaan dan hasil Musyawarah Agung Senapati (MAS) #2 di Bantul, Yogyakarta.";
+  if (d >= "2022-10-01" && d <= "2022-10-31")
+    return "Liputan pelantikan pengurus dan pameran Senapati Nusantara di Sumenep, Madura.";
+  return "";
+}
+
+/* ------------------------------------------------------------------ */
+/* Sumber berita                                                        */
+/* ------------------------------------------------------------------ */
+
+function resolveSource(slug: string): NewsItem["source"] {
+  const found = getSource(slug);
+  if (found) return found;
+  if (process.env.NODE_ENV !== "production") {
+    console.warn(`[news] Sumber belum terdaftar di data/sources.ts: "${slug}"`);
+  }
+  return { slug, name: slug } as NewsItem["source"];
+}
+
+/* ------------------------------------------------------------------ */
+/* Gabungkan semua sumber data. Artikel yang sama jadi satu kartu.      */
+/* ------------------------------------------------------------------ */
+
+type Entry = RawItem & {
+  groupSlug: string;
+  categorySlug: string;
+  index: number;
+  manual: boolean;
+};
+
+const entries: Entry[] = [
+  ...groups.flatMap((g) =>
+    g.items.map((item, index) => ({
+      ...item,
+      groupSlug: g.slug,
+      categorySlug: g.categorySlug,
+      index,
+      manual: false,
+    })),
+  ),
+  ...manualItems.map((item, index) => ({
+    ...item,
+    groupSlug: MANUAL.slug,
+    categorySlug: MANUAL.categorySlug,
+    index,
+    manual: true,
+  })),
 ];
 
-const sampleNews: NewsItem[] = seeds.map((seed, i) => {
-  const source = getSource(seed.sourceSlug);
-  if (!source) throw new Error(`Sumber tidak dikenal di data/news.ts: ${seed.sourceSlug}`);
+const byUrl = new Map<string, Entry[]>();
+for (const e of entries) {
+  const key = urlKey(e.url);
+  const list = byUrl.get(key);
+  if (list) list.push(e);
+  else byUrl.set(key, [e]);
+}
+
+function build(list: Entry[]): NewsItem {
+  const base = list.find((e) => !e.manual) ?? list[0];
+  // Prioritas: data manual dulu, lalu data dokumen Word
+  const ranked = [
+    ...list.filter((e) => e.manual),
+    ...list.filter((e) => !e.manual),
+  ];
+  const extra = meta[urlKey(base.url)];
+
+  const title =
+    ranked
+      .map((e) => (isBadTitle(e.title) ? "" : cleanTitle(e.title)))
+      .find(Boolean) ||
+    titleFromUrl(base.url) ||
+    FALLBACK_TITLE;
+
+  const excerpt =
+    ranked.map((e) => cleanExcerpt(e.excerpt)).find(Boolean) ||
+    cleanExcerpt(extra?.excerpt);
+
+  const image =
+    ranked.map((e) => cleanImage(e.image)).find(Boolean) ||
+    cleanImage(extra?.image);
+
+  const id = `${base.groupSlug}-${String(base.index + 1).padStart(3, "0")}`;
 
   return {
-    id: `contoh-${i + 1}`,
-    slug: slugify(seed.title),
-    title: seed.title,
-    excerpt: `Ringkasan singkat berita contoh dari ${source.name}. Ganti dengan data asli atau hasil sinkronisasi RSS.`,
-    url: source.url,
-    // Gambar contoh bergantian dari public/images/contoh/. Berita asli memakai gambar dari media.
-    image: `/images/contoh/${(i % 5) + 1}.svg`,
-    publishedAt: hoursAgo(seed.hoursAgo),
-    sourceSlug: seed.sourceSlug,
-    categorySlug: seed.categorySlug,
-    featured: seed.featured,
-    trending: seed.trending,
-  };
-});
+    id,
+    slug: id,
+    title,
+    excerpt,
+    image,
+    url: cleanUrl(base.url),
+    publishedAt: normalizeDate(base.date),
+    categorySlug: base.categorySlug,
+    source: resolveSource(base.sourceSlug),
+    sourceSlug: base.sourceSlug,
+  } as NewsItem;
+}
 
-export const newsItems: NewsItem[] = manualNews.length > 0 ? manualNews : sampleNews;
+const built = [...byUrl.values()].map(build);
+
+/* Artikel yang sama dengan URL berbeda (tautan share, versi mobile):
+   satu sumber + judul yang sama dianggap satu berita, lalu datanya dilengkapi. */
+const normTitle = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "");
+const seen = new Map<string, NewsItem>();
+const unique: NewsItem[] = [];
+
+for (const item of built) {
+  if (item.title === FALLBACK_TITLE) {
+    unique.push(item);
+    continue;
+  }
+  const key = `${item.source.slug}|${normTitle(item.title)}`;
+  const prev = seen.get(key);
+  if (prev) {
+    if (!prev.excerpt && item.excerpt) prev.excerpt = item.excerpt;
+    if (!prev.image && item.image) prev.image = item.image;
+    continue;
+  }
+  seen.set(key, item);
+  unique.push(item);
+}
+
+// Berita tanpa deskripsi diberi keterangan cadangan
+for (const item of unique) {
+  if (!item.excerpt) item.excerpt = fallbackExcerpt(item.publishedAt);
+}
+
+const time = (n: NewsItem) => Date.parse(n.publishedAt) || 0;
+
+/** Terbaru dulu. Sort bersifat stabil, jadi tanggal yang sama mengikuti urutan asli. */
+export const newsItems: NewsItem[] = unique.sort((a, b) => time(b) - time(a));

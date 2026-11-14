@@ -1,5 +1,4 @@
 import { categories, categoryPath } from "@/data/categories";
-import { sources } from "@/data/sources";
 
 export type NavItem = {
   label: string;
@@ -23,31 +22,34 @@ function categoryNav(parentSlug?: string): NavItem[] {
 
 export const mainNav: NavItem[] = [
   { label: "Beranda", href: "/" },
-  { label: "Berita", href: "/berita", children: categoryNav() },
   {
-    label: "Media",
-    children: sources.map((s) => ({ label: s.name, href: `/sumber/${s.slug}` })),
-  },
-  {
-    label: "Tentang kami",
-    href: "/tentang",
+    label: "Tentang Kami",
+
     children: [
-      { label: "Kirim tautan", href: "/kirim-tautan" },
-      { label: "Penafian", href: "/disclaimer" },
-      { label: "Kebijakan privasi", href: "/kebijakan-privasi" },
+      { label: "Profile Senapati Nusantara", href: "/tentang-kami/profile" },
+      { label: "Makna Logo", href: "/tentang-kami/makna-logo" },
     ],
   },
-  { label: "Kontak", href: "/kontak" },
+  {
+    label: "Berita",
+
+    children: [
+      { label: "Semua Berita", href: "/berita" },
+      { label: "Review Media", href: "/kategori/review-media" },
+      { label: "Link Berita", href: "/kategori/link-berita" },
+    ],
+  },
+  { label: "Agenda", href: "/agenda" },
+  { label: "Kontak Kami", href: "/kontak-kami" },
 ];
 
 export const footerNav: { label: string; href: string }[] = [
-  { label: "Semua berita", href: "/berita" },
-  { label: "Tentang kami", href: "/tentang" },
-  { label: "Kirim tautan", href: "/kirim-tautan" },
-  { label: "Kontak", href: "/kontak" },
-  { label: "Penafian", href: "/disclaimer" },
+  { label: "Penafian/Disclaimer", href: "/disclaimer" },
   { label: "Kebijakan privasi", href: "/kebijakan-privasi" },
 ];
 
-/** Isi dengan akun resmi, misalnya { label: "Instagram", href: "https://instagram.com/akunanda" }. */
-export const socialLinks: { label: string; href: string }[] = [];
+export const socialLinks: { label: string; href: string }[] = [
+  { label: "YouTube", href: "https://www.youtube.com/@senapatinusantara" },
+  { label: "Facebook", href: "https://www.facebook.com/senapatinusantara" },
+  { label: "Instagram", href: "https://www.instagram.com/senapatinusantara" },
+];

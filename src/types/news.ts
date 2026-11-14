@@ -3,7 +3,7 @@ export type NewsItem = {
   slug: string;
   title: string;
   /** Ringkasan singkat, bukan salinan isi artikel. */
-  excerpt: string;
+  excerpt?: string;
   /** Tautan ke artikel asli di situs media. */
   url: string;
   /** URL gambar. Jika kosong, dipakai siteConfig.placeholderImage. */
@@ -16,4 +16,5 @@ export type NewsItem = {
   featured?: boolean;
   /** Tampil di daftar populer. */
   trending?: boolean;
+  source: { slug: string; name: string };
 };
