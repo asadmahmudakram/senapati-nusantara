@@ -4,7 +4,7 @@ import { getCategory } from "@/data/categories";
 import { siteConfig } from "@/data/site";
 import { sources } from "@/data/sources";
 import { slugify, stripHtml, truncate } from "@/lib/utils";
-import { getSource } from "@/data/sources";
+
 
 const MAX_PER_FEED = 20;
 const MAX_STORED = 300;

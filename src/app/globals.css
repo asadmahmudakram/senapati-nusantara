@@ -1059,6 +1059,201 @@ h3 {
   max-width: none;
 }
 
+/* ===== Halaman Kontak Kami (tambahkan di akhir src/app/globals.css) ===== */
+.kontak {
+  --k-maroon: #6b0d0d;
+  --k-maroon-dark: #3f0808;
+  --k-gold: #d4a85a;
+  --k-bg: #f5efe9;
+  --k-card: #ffffff;
+  --k-text: #2a1410;
+  --k-muted: #6f5d57;
+  --k-line: #e4d8cd;
+  padding-bottom: 4rem;
+}
+
+.kontak-hero {
+  background: linear-gradient(135deg, var(--k-maroon-dark), var(--k-maroon));
+  border-bottom: 4px solid var(--k-gold);
+  color: #fff;
+  padding: 3.5rem 0 3rem;
+}
+.kontak-hero__eyebrow {
+  color: var(--k-gold);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+}
+.kontak-hero h1 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  line-height: 1.15;
+  margin: 0;
+}
+.kontak-hero__lead {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+  margin: 0.9rem 0 0;
+  max-width: 40rem;
+}
+
+.kontak-body {
+  margin-top: -1.75rem;
+}
+
+.kontak-identitas {
+  background: var(--k-card);
+  border: 1px solid var(--k-line);
+  border-left: 5px solid var(--k-gold);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(63, 8, 8, 0.08);
+  margin-bottom: 1.75rem;
+  padding: 1.5rem 1.75rem;
+}
+.kontak-identitas h2 {
+  color: var(--k-maroon);
+  font-size: 1.4rem;
+  margin: 0 0 0.35rem;
+}
+.kontak-identitas__nama {
+  color: var(--k-text);
+  font-weight: 600;
+  margin: 0;
+}
+.kontak-identitas__sk {
+  color: var(--k-muted);
+  font-size: 0.9rem;
+  margin: 0.35rem 0 0;
+}
+
+.kontak-grid {
+  align-items: start;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+}
+.kontak-kolom {
+  display: grid;
+  gap: 1rem;
+}
+
+.kontak-card {
+  background: var(--k-card);
+  border: 1px solid var(--k-line);
+  border-radius: 12px;
+  display: flex;
+  gap: 1rem;
+  padding: 1.4rem 1.5rem;
+}
+.kontak-card h2 {
+  color: var(--k-text);
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+}
+.kontak-card__ikon {
+  align-items: center;
+  background: #f6e8d2;
+  border-radius: 10px;
+  color: var(--k-maroon);
+  display: inline-flex;
+  flex: none;
+  height: 2.75rem;
+  justify-content: center;
+  width: 2.75rem;
+}
+.kontak-card address {
+  color: var(--k-muted);
+  font-style: normal;
+  line-height: 1.6;
+}
+.kontak-card address span {
+  display: block;
+}
+.kontak-card p {
+  margin: 0;
+}
+
+.kontak-tombol {
+  background: var(--k-maroon);
+  border-radius: 8px;
+  color: #fff;
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 0.9rem;
+  padding: 0.55rem 1rem;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.kontak-tombol:hover {
+  background: var(--k-maroon-dark);
+}
+
+.kontak-email {
+  color: var(--k-maroon);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.kontak-sosial {
+  display: grid;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.kontak-sosial a {
+  align-items: baseline;
+  border: 1px solid var(--k-line);
+  border-radius: 8px;
+  color: var(--k-text);
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  padding: 0.6rem 0.9rem;
+  text-decoration: none;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+.kontak-sosial a:hover {
+  background: #fbf5ec;
+  border-color: var(--k-gold);
+}
+.kontak-sosial strong {
+  color: var(--k-maroon);
+}
+.kontak-sosial span {
+  color: var(--k-muted);
+  font-size: 0.9rem;
+}
+
+.kontak-peta {
+  background: var(--k-card);
+  border: 1px solid var(--k-line);
+  border-radius: 12px;
+  min-height: 24rem;
+  overflow: hidden;
+}
+.kontak-peta iframe {
+  border: 0;
+  display: block;
+  height: 100%;
+  min-height: 24rem;
+  width: 100%;
+}
+
+@media (max-width: 860px) {
+  .kontak-grid {
+    grid-template-columns: 1fr;
+  }
+  .kontak-peta,
+  .kontak-peta iframe {
+    min-height: 18rem;
+  }
+}
+
 /* Menu seluler */
 .mobile-menu__toggle {
   display: grid;
