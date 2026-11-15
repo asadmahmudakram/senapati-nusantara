@@ -371,13 +371,22 @@ a.pager__btn:hover {
 
 .agenda-card__status {
   display: inline-block;
-  margin: 0;
+  margin: 0 0.75rem 0 0;
+  vertical-align: middle;
   padding: 0.15rem 0.7rem;
   border-radius: 999px;
   font-size: 0.8rem;
   font-weight: 600;
   background: var(--line);
   color: var(--slate);
+}
+.agenda-card__status + time,
+.agenda-card__status + span,
+.agenda-card__status + p {
+  display: inline;
+  vertical-align: middle;
+  font-weight: 600;
+  color: var(--ink);
 }
 .agenda-card__status.is-upcoming {
   background: var(--gold);
