@@ -318,20 +318,42 @@ a.pager__btn:hover {
   box-shadow: 0 4px 12px rgb(0 0 0 / 0.25);
 }
 
-/* ===== Galeri gambar agenda (tambahkan di akhir src/app/globals.css) ===== */
+/* =====================================================================
+   AGENDA (versi final) - menggantikan SEMUA aturan .agenda-* di globals.css.
+   Selektor diberi awalan .agenda-card supaya menang atas aturan
+   .prose / .page__content.prose (rata kiri-kanan, padding ul, margin h2).
+   ===================================================================== */
 
-/* Ganti aturan .agenda-card__media lama dengan ini: tinggi diatur oleh galeri */
-.agenda-card__media {
-  aspect-ratio: auto;
+.agenda-list,
+.prose .agenda-list {
+  display: grid;
+  gap: 1.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.agenda-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  box-shadow: 0 6px 20px rgba(63, 8, 8, 0.06);
+  overflow: hidden;
+}
+
+/* ---------- Galeri / poster ---------- */
+.agenda-card .agenda-card__media {
   background: var(--maroon-deep);
-  border-radius: 0;
+  line-height: 0;
   overflow: hidden;
 }
 
 .agenda-gallery {
   position: relative;
 }
-.agenda-gallery__track {
+
+/* padding:0 penting: .prose ul memberi padding-left yang merusak lebar geser */
+.agenda-card .agenda-gallery__track {
   display: flex;
   list-style: none;
   margin: 0;
@@ -342,26 +364,27 @@ a.pager__btn:hover {
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
 }
-.agenda-gallery__track::-webkit-scrollbar {
+.agenda-card .agenda-gallery__track::-webkit-scrollbar {
   display: none;
 }
-.agenda-gallery__track:focus-visible {
+.agenda-card .agenda-gallery__track:focus-visible {
   outline: 3px solid var(--gold);
   outline-offset: -3px;
 }
 
-/* Semua slide sama tinggi, supaya kartu tidak "melompat" saat digeser */
-.agenda-gallery__slide {
+/* Semua slide persegi dan sama besar, jadi kartu tidak "melompat" saat digeser */
+.agenda-card .agenda-gallery__slide {
   align-items: center;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   display: flex;
   flex: 0 0 100%;
   justify-content: center;
-  max-height: 34rem;
+  margin: 0;
+  max-width: none;
   scroll-snap-align: center;
   scroll-snap-stop: always;
 }
-.agenda-gallery__slide img {
+.agenda-card .agenda-gallery__slide img {
   display: block;
   height: 100%;
   object-fit: contain; /* poster tidak terpotong */
@@ -374,7 +397,7 @@ a.pager__btn:hover {
 .agenda-gallery__btn {
   align-items: center;
   background: rgba(20, 4, 4, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 999px;
   color: #fff;
   cursor: pointer;
@@ -391,7 +414,7 @@ a.pager__btn:hover {
   width: 2.5rem;
 }
 .agenda-gallery__btn:hover:not(:disabled) {
-  background: rgba(107, 13, 13, 0.9);
+  background: rgba(107, 13, 13, 0.92);
 }
 .agenda-gallery__btn:focus-visible {
   outline: 3px solid var(--gold);
@@ -399,7 +422,7 @@ a.pager__btn:hover {
 }
 .agenda-gallery__btn:disabled {
   cursor: default;
-  opacity: 0.35;
+  opacity: 0.3;
 }
 .agenda-gallery__btn--prev {
   left: 0.6rem;
@@ -408,148 +431,131 @@ a.pager__btn:hover {
   right: 0.6rem;
 }
 
-/* Titik penanda posisi */
+/* Titik penanda dalam kapsul gelap supaya terbaca di atas gambar apa pun */
 .agenda-gallery__dots {
-  bottom: 0.6rem;
+  align-items: center;
+  background: rgba(20, 4, 4, 0.55);
+  border-radius: 999px;
+  bottom: 0.7rem;
   display: flex;
   gap: 0.4rem;
-  justify-content: center;
-  left: 0;
-  pointer-events: none;
+  left: 50%;
+  padding: 0.4rem 0.65rem;
   position: absolute;
-  right: 0;
+  transform: translateX(-50%);
 }
 .agenda-gallery__dot {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.55);
   border: 0;
   border-radius: 999px;
   cursor: pointer;
-  height: 0.55rem;
+  height: 0.5rem;
   padding: 0;
-  pointer-events: auto;
   transition:
     background 0.15s,
     width 0.15s;
-  width: 0.55rem;
+  width: 0.5rem;
 }
 .agenda-gallery__dot.is-active {
   background: var(--gold);
-  width: 1.4rem;
+  width: 1.3rem;
 }
 
-/* Baris lencana status + tanggal */
-.agenda-card__date {
+/* ---------- Isi kartu ---------- */
+.agenda-card .agenda-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1.25rem 1.25rem 1.5rem;
+}
+.agenda-card .agenda-card__body > * {
+  margin: 0;
+}
+.agenda-card .agenda-card__body p,
+.agenda-card .agenda-card__body li {
+  -webkit-hyphens: none;
+  hyphens: none;
+  line-height: 1.6;
+  max-width: none;
+  text-align: left; /* mengalahkan rata kiri-kanan dari .page__content.prose */
+}
+
+.agenda-card .agenda-card__date {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem 0.75rem;
-  margin: 0;
 }
-.agenda-card__date .agenda-card__status {
-  margin: 0;
-}
-.agenda-card__date > span:last-child {
+.agenda-card .agenda-card__date > span:last-child {
   font-weight: 600;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .agenda-gallery__track {
-    scroll-behavior: auto;
-  }
-}
-.agenda-card__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* poster tidak terpotong */
-}
-.agenda-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 2rem;
-}
-
-.agenda-card {
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 1rem;
-  background: var(--paper);
-}
-.agenda-card__media {
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background: var(--maroon-deep);
-}
-.agenda-card__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* poster tidak terpotong */
-}
-.agenda-card__body {
-  padding: 1.5rem;
-}
-.agenda-card__body p {
-  max-width: none;
-}
-.agenda-card__title {
-  margin: 0.5rem 0 0.25rem;
-  font-size: 1.4rem;
-}
-.agenda-card__theme {
-  margin: 0 0 1rem;
-  color: var(--slate);
-  font-style: italic;
-}
-
-.agenda-card__status {
-  display: inline-block;
-  margin: 0 0.75rem 0 0;
-  vertical-align: middle;
-  padding: 0.15rem 0.7rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 600;
+.agenda-card .agenda-card__status {
+  align-items: center;
   background: var(--line);
+  border-radius: 999px;
   color: var(--slate);
+  display: inline-flex;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  margin: 0;
+  padding: 0.4rem 0.8rem;
+  width: fit-content;
 }
-.agenda-card__status + time,
-.agenda-card__status + span,
-.agenda-card__status + p {
-  display: inline;
-  vertical-align: middle;
-  font-weight: 600;
-  color: var(--ink);
-}
-.agenda-card__status.is-upcoming {
+.agenda-card .agenda-card__status.is-upcoming {
   background: var(--gold);
   color: var(--ink);
 }
-.agenda-card__status.is-live {
+.agenda-card .agenda-card__status.is-live {
   background: var(--crimson);
   color: #fff;
 }
 
-.agenda-card__meta {
-  margin: 0 0 1rem;
-  display: grid;
-  gap: 0.5rem;
+.agenda-card .agenda-card__title {
+  font-size: 1.3rem;
+  line-height: 1.3;
+  margin: 0.3rem 0 0;
 }
-.agenda-card__meta div {
-  display: grid;
-  grid-template-columns: 5.5rem 1fr;
-  gap: 0.75rem;
-}
-.agenda-card__meta dt {
-  font-weight: 600;
+.agenda-card .agenda-card__theme {
   color: var(--slate);
+  font-style: italic;
 }
-.agenda-card__meta dd {
-  margin: 0;
-}
-.agenda-card__partners {
+
+.agenda-card .agenda-card__partners {
+  color: var(--slate);
   font-size: 0.9rem;
-  color: var(--slate);
+}
+.agenda-card .agenda-card__partners ul {
+  margin: 0.35rem 0 0;
+  padding-left: 1.1rem;
+}
+
+/* ---------- Layar lebar: poster di kiri (berbingkai), teks di kanan ---------- */
+@media (min-width: 900px) {
+  .agenda-card.agenda-card--with-media {
+    align-items: start;
+    display: grid;
+    gap: 0;
+    grid-template-columns: minmax(0, 27rem) minmax(0, 1fr);
+  }
+  .agenda-card--with-media .agenda-card__media {
+    border-radius: 0.75rem;
+    margin: 1.25rem 0 1.25rem 1.25rem;
+  }
+  .agenda-card .agenda-card__body {
+    padding: 1.5rem 1.75rem;
+  }
+  .agenda-card .agenda-card__title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .agenda-card .agenda-gallery__track {
+    scroll-behavior: auto;
+  }
 }
 
 @media (max-width: 959px) {
