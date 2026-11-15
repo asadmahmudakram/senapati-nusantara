@@ -13,7 +13,9 @@ type Props = {
   searchParams: Promise<{ q?: string; page?: string }>;
 };
 
-export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
+export async function generateMetadata({
+  searchParams,
+}: Props): Promise<Metadata> {
   const { q } = await searchParams;
   return {
     title: q ? `Hasil pencarian: ${q}` : "Cari berita",
@@ -43,7 +45,9 @@ function search(query: string): NewsItem[] {
 
   return [...byUrl.values()]
     .filter((item) => {
-      const haystack = normalize(`${item.title} ${item.excerpt ?? ""} ${item.source.name}`);
+      const haystack = normalize(
+        `${item.title} ${item.excerpt ?? ""} ${item.source.name}`,
+      );
       return terms.every((t) => haystack.includes(t));
     })
     .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
@@ -57,18 +61,24 @@ export default async function CariPage({ searchParams }: Props) {
 
   return (
     <div className="container page">
-      <Breadcrumb items={[{ label: "Beranda", href: "/" }, { label: "Cari berita" }]} />
+      <Breadcrumb
+        items={[{ label: "Beranda", href: "/" }, { label: "Cari berita" }]}
+      />
       <h1 className="page-title">Cari berita</h1>
 
-      <div style={{ margin: "1rem 0 1.5rem", maxWidth: "32rem" }}>
-        <SearchBar variant="menu" />
+      <div style={{ margin: "1rem 0 1.5rem" }}>
+        <SearchBar variant="page" defaultValue={query} />
       </div>
 
       {!query ? (
-        <p className="lead">Ketik kata kunci, misalnya &ldquo;keris&rdquo; atau &ldquo;Sumenep&rdquo;.</p>
+        <p className="lead">
+          Ketik kata kunci, misalnya &ldquo;keris&rdquo; atau
+          &ldquo;Sumenep&rdquo;.
+        </p>
       ) : found.length === 0 ? (
         <p className="empty">
-          Tidak ada hasil untuk &ldquo;{query}&rdquo;. Coba kata kunci lain yang lebih singkat.
+          Tidak ada hasil untuk &ldquo;{query}&rdquo;. Coba kata kunci lain yang
+          lebih singkat.
         </p>
       ) : (
         <>

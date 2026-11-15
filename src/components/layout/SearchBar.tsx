@@ -1,6 +1,9 @@
-type Props = { variant?: "header" | "menu" };
+type Props = {
+  variant?: "header" | "menu" | "page";
+  defaultValue?: string;
+};
 
-export default function SearchBar({ variant = "header" }: Props) {
+export default function SearchBar({ variant = "header", defaultValue }: Props) {
   const id = `q-${variant}`;
 
   return (
@@ -8,7 +11,14 @@ export default function SearchBar({ variant = "header" }: Props) {
       <label htmlFor={id} className="sr-only">
         Cari berita
       </label>
-      <input id={id} name="q" type="search" placeholder="Cari berita" autoComplete="off" />
+      <input
+        id={id}
+        name="q"
+        type="search"
+        placeholder="Cari berita"
+        autoComplete="off"
+        defaultValue={defaultValue}
+      />
       <button type="submit">Cari</button>
     </form>
   );

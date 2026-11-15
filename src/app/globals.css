@@ -156,6 +156,88 @@ h3 {
   border-radius: 0.75rem;
 }
 
+/* ===== Paginasi (tambahkan di akhir src/app/globals.css) ===== */
+.pager {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 2.5rem 0 1rem;
+}
+.pager__list {
+  align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.4rem;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.pager__btn {
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e4d8cd;
+  border-radius: 10px;
+  color: #6b0d0d;
+  display: inline-flex;
+  font-size: 0.95rem;
+  font-weight: 600;
+  gap: 0.35rem;
+  height: 2.5rem;
+  justify-content: center;
+  min-width: 2.5rem;
+  padding: 0 0.7rem;
+  text-decoration: none;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
+}
+a.pager__btn:hover {
+  background: #fbf5ec;
+  border-color: #d4a85a;
+}
+.pager__btn--current {
+  background: #6b0d0d;
+  border-color: #6b0d0d;
+  color: #fff;
+  cursor: default;
+}
+.pager__btn--off {
+  background: #f1ebe5;
+  border-color: #ebe2d8;
+  color: #b3a59d;
+  cursor: not-allowed;
+}
+.pager__nav {
+  padding: 0 0.9rem;
+}
+.pager__gap {
+  color: #8a7770;
+  padding: 0 0.15rem;
+}
+.pager__info {
+  color: #8a7770;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* Layar kecil: tombol panah saja, angka tetangga disembunyikan */
+@media (max-width: 560px) {
+  .pager__label,
+  .pager__opt {
+    display: none;
+  }
+  .pager__nav {
+    padding: 0;
+    width: 2.5rem;
+  }
+  .pager__list {
+    gap: 0.3rem;
+  }
+}
+
 /* Sidebar */
 .page__sidebar {
   position: sticky;
@@ -531,6 +613,42 @@ h3 {
 }
 .search-bar--menu input {
   flex: 1;
+}
+/* Kolom cari di halaman /cari (latar terang) */
+.search-bar.search-bar--page {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 34rem;
+}
+.search-bar.search-bar--page input {
+  background: #fff;
+  border: 2px solid #d4a85a;
+  border-radius: 8px;
+  color: #2a1410;
+  flex: 1;
+  font: inherit;
+  min-width: 0;
+  padding: 0.7rem 0.9rem;
+}
+.search-bar.search-bar--page input::placeholder {
+  color: #8a7770;
+}
+.search-bar.search-bar--page input:focus {
+  border-color: #6b0d0d;
+  outline: none;
+}
+.search-bar.search-bar--page button {
+  background: #6b0d0d;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  padding: 0 1.2rem;
+}
+.search-bar.search-bar--page button:hover {
+  background: #3f0808;
 }
 
 /* ===== Aturan dasar yang hilang ===== */
