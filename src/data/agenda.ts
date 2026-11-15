@@ -17,10 +17,14 @@ export const agenda: Agenda[] = [
       alamat: "Jl. Cikini Raya, No. 73, Cikini, Menteng, Jakarta Pusat",
     },
     kerjaSama: ["SENAPATI NUSANTARA"],
-    gambar: {
-      src: "/images/agenda/mas-sn-3-2026.jpg",
-      alt: "Poster Musyawarah Agung Senapati Nusantara MAS-SN#3, 27–29 November 2026, Gedung Ali Sadikin, Taman Ismail Marzuki, Jakarta",
-    },
+    galeri: [
+      { src: "/images/agenda/mas3-poster.png", alt: "Poster MAS#3 2026" },
+      { src: "/images/agenda/mas3-rundown.png", alt: "Susunan acara MAS#3" },
+      {
+        src: "/images/agenda/mas3-lokasi.png",
+        alt: "Denah lokasi Gedung Ali Sadikin",
+      },
+    ],
   },
   {
     id: "pagelaran-budaya-pati-2022",

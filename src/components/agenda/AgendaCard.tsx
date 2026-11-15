@@ -1,4 +1,5 @@
 import type { Agenda } from "@/types/agenda";
+import AgendaGallery from "./AgendaGallery";
 
 const tanggal = new Intl.DateTimeFormat("id-ID", {
   day: "numeric",
@@ -31,13 +32,20 @@ function statusAgenda(mulai: string, selesai: string) {
 export default function AgendaCard({ item }: { item: Agenda }) {
   const status = statusAgenda(item.mulai, item.selesai);
 
+  // "galeri" (banyak gambar) diutamakan; "gambar" (satu gambar) tetap didukung.
+  const gambar = item.galeri?.length
+    ? item.galeri
+    : item.gambar
+      ? [item.gambar]
+      : [];
+
   return (
     <article
-      className={`agenda-card${item.gambar ? " agenda-card--with-media" : ""}`}
+      className={`agenda-card${gambar.length > 0 ? " agenda-card--with-media" : ""}`}
     >
-      {item.gambar && (
+      {gambar.length > 0 && (
         <div className="agenda-card__media">
-          <img src={item.gambar.src} alt={item.gambar.alt} loading="lazy" />
+          <AgendaGallery images={gambar} />
         </div>
       )}
 

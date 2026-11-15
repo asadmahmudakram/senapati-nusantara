@@ -318,11 +318,144 @@ a.pager__btn:hover {
   box-shadow: 0 4px 12px rgb(0 0 0 / 0.25);
 }
 
+/* ===== Galeri gambar agenda (tambahkan di akhir src/app/globals.css) ===== */
+
+/* Ganti aturan .agenda-card__media lama dengan ini: tinggi diatur oleh galeri */
 .agenda-card__media {
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
+  aspect-ratio: auto;
   background: var(--maroon-deep);
-  border-radius: 8px 8px 0 0;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.agenda-gallery {
+  position: relative;
+}
+.agenda-gallery__track {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  padding: 0;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.agenda-gallery__track::-webkit-scrollbar {
+  display: none;
+}
+.agenda-gallery__track:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: -3px;
+}
+
+/* Semua slide sama tinggi, supaya kartu tidak "melompat" saat digeser */
+.agenda-gallery__slide {
+  align-items: center;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  flex: 0 0 100%;
+  justify-content: center;
+  max-height: 34rem;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+.agenda-gallery__slide img {
+  display: block;
+  height: 100%;
+  object-fit: contain; /* poster tidak terpotong */
+  -webkit-user-select: none;
+  user-select: none;
+  width: 100%;
+}
+
+/* Tombol < dan > */
+.agenda-gallery__btn {
+  align-items: center;
+  background: rgba(20, 4, 4, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  height: 2.5rem;
+  justify-content: center;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition:
+    background 0.15s,
+    opacity 0.15s;
+  width: 2.5rem;
+}
+.agenda-gallery__btn:hover:not(:disabled) {
+  background: rgba(107, 13, 13, 0.9);
+}
+.agenda-gallery__btn:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+.agenda-gallery__btn:disabled {
+  cursor: default;
+  opacity: 0.35;
+}
+.agenda-gallery__btn--prev {
+  left: 0.6rem;
+}
+.agenda-gallery__btn--next {
+  right: 0.6rem;
+}
+
+/* Titik penanda posisi */
+.agenda-gallery__dots {
+  bottom: 0.6rem;
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
+.agenda-gallery__dot {
+  background: rgba(255, 255, 255, 0.5);
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  height: 0.55rem;
+  padding: 0;
+  pointer-events: auto;
+  transition:
+    background 0.15s,
+    width 0.15s;
+  width: 0.55rem;
+}
+.agenda-gallery__dot.is-active {
+  background: var(--gold);
+  width: 1.4rem;
+}
+
+/* Baris lencana status + tanggal */
+.agenda-card__date {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+  margin: 0;
+}
+.agenda-card__date .agenda-card__status {
+  margin: 0;
+}
+.agenda-card__date > span:last-child {
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .agenda-gallery__track {
+    scroll-behavior: auto;
+  }
 }
 .agenda-card__media img {
   width: 100%;
