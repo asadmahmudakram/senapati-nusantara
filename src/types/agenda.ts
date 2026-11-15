@@ -20,4 +20,5 @@ export type Agenda = {
     src: string;
     alt: string;
   };
+  galeri?: { src: string; alt: string }[];
 };
