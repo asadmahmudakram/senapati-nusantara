@@ -592,15 +592,21 @@ a.pager__btn:hover {
   margin-left: auto;
 }
 .brand {
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-weight: 700;
-  font-size: 1.3rem;
-  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  flex: none;
   text-decoration: none;
-  letter-spacing: -0.01em;
 }
-.brand:hover {
-  color: var(--gold);
+.brand__img {
+  display: block;
+  width: auto;
+  height: 44px; /* bar header 64px; ubah sesuai selera */
+  max-width: none;
+}
+@media (min-width: 960px) {
+  .brand__img {
+    height: 48px;
+  }
 }
 
 /* Bilah menu (desktop) */

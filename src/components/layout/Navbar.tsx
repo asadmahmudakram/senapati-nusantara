@@ -1,21 +1,14 @@
-import Link from "next/link";
 import { mainNav } from "@/data/navigation";
-import { siteConfig } from "@/data/site";
 import SearchBar from "./SearchBar";
 import MobileMenu from "./MobileMenu";
 import NavMenu from "./NavMenu";
+import { SiteLogo } from "@/components/site-logo";
 
 export default function Navbar() {
   return (
     <header className="site-header">
       <div className="container site-header__bar">
-        <Link
-          href="/"
-          className="brand"
-          aria-label={`${siteConfig.name}, ke beranda`}
-        >
-          {siteConfig.name}
-        </Link>
+        <SiteLogo className="brand" />
 
         <div className="site-header__tools">
           <SearchBar variant="header" />

@@ -12,6 +12,7 @@ export type LiputanGroup = {
   slug: string;
   title: string;
   date: string;
+  categorySlug: string;
   items: LiputanItem[];
 };
 
