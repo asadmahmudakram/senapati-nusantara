@@ -12,7 +12,7 @@ export const siteConfig = {
   email:
     process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "infosenapatinusantara@gmail.com",
   /** Letakkan gambarnya di public/images/placeholder.svg. */
-  placeholderImage: "/images/placeholder.svg",
+  placeholderImage: "/images/logo-senapati.png",
   address: {
     label: "Sekretariat",
     lines: [
