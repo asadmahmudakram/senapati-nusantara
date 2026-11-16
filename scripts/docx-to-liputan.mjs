@@ -3,13 +3,16 @@ import fs from "node:fs";
 import path from "node:path";
 
 const dir = process.argv[2];
-const WITH_IMAGES = process.argv.includes("--images"); // ambil gambar tiap link (lambat)
+const WITH_IMAGES = process.argv.includes("--images"); // ambil gambar tiap link
+const RETRY = process.argv.includes("--retry"); // coba lagi link yang sebelumnya gagal
 if (!dir) {
   console.error(
-    'Pakai: node scripts/docx-to-liputan.mjs "C:/folder-docx" [--images]',
+    'Pakai: node scripts/docx-to-liputan.mjs "C:/folder-docx" [--images] [--retry]',
   );
   process.exit(1);
 }
+
+const CACHE_FILE = "src/data/liputan.images.json";
 
 // Sesuaikan nama file / kategori / tanggal di sini.
 const FILES = [
@@ -218,7 +221,15 @@ function titleFromUrl(url) {
     .trim();
 }
 
-// Baca isi <meta> dengan urutan atribut apa pun.
+/* ---------- Pengambilan judul dan gambar ---------- */
+
+// Beberapa situs memblokir browser biasa tetapi mengizinkan crawler pratinjau.
+const USER_AGENTS = [
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
+  "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)",
+  "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+];
+
 function metaContent(html, key) {
   for (const tag of html.match(/<meta\b[^>]*>/gi) ?? []) {
     const k = tag
@@ -228,34 +239,85 @@ function metaContent(html, key) {
   }
 }
 
-async function getMeta(url) {
+function linkImageSrc(html) {
+  for (const tag of html.match(/<link\b[^>]*>/gi) ?? []) {
+    if (/rel=["']image_src["']/i.test(tag))
+      return tag.match(/href=["']([^"']+)["']/i)?.[1];
+  }
+}
+
+function jsonLdImage(html) {
+  for (const m of html.matchAll(
+    /<script[^>]+application\/ld\+json[^>]*>([\s\S]*?)<\/script>/gi,
+  )) {
+    try {
+      const data = JSON.parse(m[1].trim());
+      const nodes = Array.isArray(data)
+        ? data
+        : [data, ...(Array.isArray(data?.["@graph"]) ? data["@graph"] : [])];
+      for (const n of nodes) {
+        const im = n?.image ?? n?.thumbnailUrl;
+        const first = Array.isArray(im) ? im[0] : im;
+        const url = typeof first === "string" ? first : first?.url;
+        if (url) return url;
+      }
+    } catch {
+      /* JSON-LD rusak: abaikan */
+    }
+  }
+}
+
+function absUrl(raw, base) {
+  if (!raw) return undefined;
+  try {
+    const u = new URL(raw.replace(/&amp;/g, "&").trim(), base);
+    return u.protocol === "http:" || u.protocol === "https:"
+      ? u.href
+      : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+async function fetchHtml(url, userAgent) {
   try {
     const res = await fetch(url, {
       headers: {
-        "user-agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
-        accept: "text/html",
+        "user-agent": userAgent,
+        accept: "text/html,application/xhtml+xml",
+        "accept-language": "id-ID,id;q=0.9,en;q=0.7",
       },
+      redirect: "follow",
       signal: AbortSignal.timeout(12000),
     });
-    const html = await res.text();
+    if (!res.ok) return null;
+    return { html: await res.text(), finalUrl: res.url || url };
+  } catch {
+    return null;
+  }
+}
+
+async function getMeta(url) {
+  let title;
+  for (const ua of USER_AGENTS) {
+    const page = await fetchHtml(url, ua);
+    if (!page) continue;
+    const { html, finalUrl } = page;
+    title ??=
+      metaContent(html, "og:title") ??
+      html.match(/<title>([^<]*)/i)?.[1]?.trim();
     const raw =
       metaContent(html, "og:image") ??
+      metaContent(html, "og:image:secure_url") ??
       metaContent(html, "og:image:url") ??
-      metaContent(html, "twitter:image");
-    let image;
-    try {
-      image = raw ? new URL(raw.replace(/&amp;/g, "&"), url).href : undefined;
-    } catch {}
-    return {
-      title:
-        metaContent(html, "og:title") ??
-        html.match(/<title>([^<]*)/i)?.[1]?.trim(),
-      image,
-    };
-  } catch {
-    return {};
+      metaContent(html, "twitter:image") ??
+      metaContent(html, "twitter:image:src") ??
+      linkImageSrc(html) ??
+      jsonLdImage(html);
+    const image = absUrl(raw, finalUrl);
+    if (image) return { title, image };
   }
+  return { title };
 }
 
 async function pool(list, n, fn) {
@@ -265,6 +327,15 @@ async function pool(list, n, fn) {
       while (i < list.length) await fn(list[i++]);
     }),
   );
+}
+
+/* ---------- Cache gambar: url -> alamat gambar, atau null jika gagal ---------- */
+
+let imageCache = {};
+try {
+  imageCache = JSON.parse(fs.readFileSync(CACHE_FILE, "utf8"));
+} catch {
+  /* belum ada cache */
 }
 
 const groups = [];
@@ -293,15 +364,33 @@ for (const cfg of FILES) {
     seen.add(key);
     const slug = sourceSlugOf(it.url);
     hosts.set(slug, baseDomain(hostOf(it.url)));
-    items.push({ ...it, sourceSlug: slug });
+
+    const cached = imageCache[it.url];
+    items.push({
+      ...it,
+      sourceSlug: slug,
+      ...(cached ? { image: cached } : {}),
+    });
   }
 
-  const todo = items.filter((i) => !i.title || (WITH_IMAGES && !i.image));
+  // Yang perlu diambil: judul kosong, atau gambar belum ada.
+  // Link yang pernah gagal (null di cache) dilewati kecuali memakai --retry.
+  const needImage = (i) =>
+    WITH_IMAGES && !i.image && (RETRY || !(i.url in imageCache));
+  const todo = items.filter((i) => !i.title || needImage(i));
   console.log(`${cfg.file}: ${items.length} item, ${todo.length} perlu fetch`);
+
   await pool(todo, 8, async (it) => {
     const meta = await getMeta(it.url);
     if (!it.title) it.title = cleanTitle(meta.title) || titleFromUrl(it.url);
-    if (meta.image && WITH_IMAGES) it.image = meta.image;
+    if (WITH_IMAGES) {
+      if (meta.image) {
+        it.image = meta.image;
+        imageCache[it.url] = meta.image;
+      } else if (!(it.url in imageCache)) {
+        imageCache[it.url] = null; // tandai sudah dicoba
+      }
+    }
   });
 
   groups.push({
@@ -319,15 +408,21 @@ fs.writeFileSync(
   "src/data/liputan.generated.ts",
   `import type { LiputanGroup } from "@/types/liputan";\n\nexport const generatedGroups: LiputanGroup[] = ${JSON.stringify(groups, null, 2)};\n`,
 );
+if (WITH_IMAGES) {
+  fs.writeFileSync(CACHE_FILE, JSON.stringify(imageCache, null, 2) + "\n");
+}
 
-const total = groups.reduce((n, g) => n + g.items.length, 0);
-const withImage = groups.reduce(
-  (n, g) => n + g.items.filter((i) => i.image).length,
-  0,
-);
+const all = groups.flatMap((g) => g.items);
+const noImage = all.filter((i) => !i.image);
 console.log(
-  `\nSelesai: ${total} item, ${withImage} punya gambar${WITH_IMAGES ? "" : " (jalankan dengan --images untuk mengambil gambar)"}.`,
+  `\nSelesai: ${all.length} item, ${all.length - noImage.length} punya gambar, ${noImage.length} belum.`,
 );
+if (WITH_IMAGES && noImage.length > 0) {
+  console.log(
+    "\nBelum punya gambar (isi manual di liputan.manual.ts atau jalankan lagi dengan --retry):",
+  );
+  for (const i of noImage) console.log(`  ${i.sourceSlug}  ${i.url}`);
+}
 
 // Bandingkan dengan sources.ts yang sebenarnya
 let existing = new Set();
@@ -346,8 +441,8 @@ const missing = [...hosts].filter(([slug]) => !existing.has(slug)).sort();
 
 console.log(
   missing.length === 0
-    ? "Semua sumber sudah terdaftar di sources.ts."
-    : `${missing.length} sumber belum ada di sources.ts:\n`,
+    ? "\nSemua sumber sudah terdaftar di sources.ts."
+    : `\n${missing.length} sumber belum ada di sources.ts:\n`,
 );
 for (const [slug, domain] of missing) {
   console.log(

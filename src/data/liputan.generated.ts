@@ -1,9 +1,10 @@
-import type { GeneratedGroup } from "@/types/liputan";
+import type { LiputanGroup } from "@/types/liputan";
 
-export const generatedGroups: GeneratedGroup[] = [
+export const generatedGroups: LiputanGroup[] = [
   {
     "slug": "review-media-01",
-    "name": "Review Media 01",
+    "title": "Review Media 01",
+    "date": "2022-09-14",
     "categorySlug": "review-media",
     "items": [
       {
@@ -97,7 +98,8 @@ export const generatedGroups: GeneratedGroup[] = [
         "excerpt": "jogja.jpnn.com, YOGYAKARTA – Organisasi induk paguyuban keris di Indonesia, Senapati Nusantara akan menggelar Musyawarah Agung di Bantul, Daerah Istimewa Yogyakarta (DIY) pada Sabtu (17/9). Ketua Sterring Committee (SC)…",
         "url": "https://jogja.jpnn.com/jogja-terkini/4963/4-agenda-penting-tentang-keris-pada-musyawarah-agung-senapati-nusantara",
         "date": "2022-09-14",
-        "sourceSlug": "jpnn"
+        "sourceSlug": "jpnn",
+        "image": "https://cloud.jpnn.com/photo/jogja/arsip/normal/2022/08/22/pameran-keris-foto-humas-pemda-diy-amjrb-vhwy.jpg"
       },
       {
         "title": "Para Pecinta Keris Gelar Pameran Di Jogja, Ada Keris Langka Peninggalan Majapahit",
@@ -143,8 +145,7 @@ export const generatedGroups: GeneratedGroup[] = [
         "excerpt": "Mercusuar.co, Yogyakarta – Keris Naga Sasra memiliki ciri khusus antara lain bentuk kepala naga pada gandik keris dan badannya menjulur sampe atas dengan hiasan kinatah serta sisik emas pada bagian badannya dan bilahnya…",
         "url": "https://mercusuar.co/2022/09/15/keris-naga-sasra-akan-ditampilkan-pada-pameran-keris-terbesar-se-indonesia-di-bantul/",
         "date": "2022-09-14",
-        "sourceSlug": "mercusuar-co",
-        "image": "https://mercusuar.co/wp-content/uploads/2021/12/LOGO-MERCUSUAR-01-1-scaled-1-1024x1024.jpg"
+        "sourceSlug": "mercusuar-co"
       },
       {
         "title": "Senapati Nusantara Akan Pamerkan Keris Era Majapahit Di Yogyakarta",
@@ -195,14 +196,16 @@ export const generatedGroups: GeneratedGroup[] = [
         "excerpt": "WARTAJOGJA.ID: Musyawarah Agung Senapati Nusantara -organisasi induk pecinta keris terbesar di Indonesia- tak hanya berisi agenda pemilihan Sekjen periode 2022-2026 dan pengusulan 25 November sebagai Hari Keris…",
         "url": "https://www.wartajogja.id/2022/09/catat-musyawarah-agung-senapati.html",
         "date": "2022-09-14",
-        "sourceSlug": "wartajogja-id"
+        "sourceSlug": "wartajogja-id",
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhM-ShTsInODZJ49hswhVv-Kc4BaEv_TsaAIe-nAVEFhKU0HfggafVLhlt_4sHtNPyXiM4ewZpsgfrpcbwoHpaBNYOODS9lOM-aHlFQf_x5hYwR2K868Og0w2034SEZbg0t_FVgTf18lCOH/w1200-h630-p-k-no-nu/20220914_112411_copy_1008x756.jpg"
       },
       {
         "title": "Ingin Lihat Keris Era Majapahit? Yuk, Datang Ke Pameran Senapati Nusantara di Jogja",
         "excerpt": "jogja.jpnn.com, YOGYAKARTA – Pameran keris-keris langka dan bersejarah akan segera berlangsung di Yogyakarta pada 16-18 September 2022. Pameran keris itu diinisiasi oleh organisasi induk pencinta keris di Indonesia,…",
         "url": "https://jogja.jpnn.com/jogja-terkini/4960/ingin-lihat-keris-era-majapahit-yuk-datang-ke-pameran-senapati-nusantara-di-jogja",
         "date": "2022-09-14",
-        "sourceSlug": "jpnn"
+        "sourceSlug": "jpnn",
+        "image": "https://cloud.jpnn.com/photo/jatim/news/normal/2022/09/15/pemeran-keris-senapati-nusantara-foto-antara-0vtbz-nyjg.jpg"
       },
       {
         "title": "Pameran Keris Terbesar Di Yogyakarta Akan Dihadiri Gibran Hingga Hasto Kristiyanto, Ada Koleksi Keris Naga Sasra Sampai Singo Barong",
@@ -245,7 +248,8 @@ export const generatedGroups: GeneratedGroup[] = [
   },
   {
     "slug": "review-media-02",
-    "name": "Review Media 02",
+    "title": "Review Media 02",
+    "date": "2022-09-17",
     "categorySlug": "review-media",
     "items": [
       {
@@ -300,7 +304,8 @@ export const generatedGroups: GeneratedGroup[] = [
         "excerpt": "jogja.jpnn.com, YOGYAKARTA – Organisasi induk paguyuban keris di Indonesia, Senapati Nusantara resmi membuka Musyawarah Agung 2022 (MAS) di Bantul, Daerah Istimewa Yogyakarta (DIY) pada Sabtu (17/9). Ada empat agenda…",
         "url": "https://jogja.jpnn.com/jogja-terkini/5011/dari-jogja-senapati-nusantara-menyusun-perda-sumenep-tentang-keris",
         "date": "2022-09-17",
-        "sourceSlug": "jpnn"
+        "sourceSlug": "jpnn",
+        "image": "https://cloud.jpnn.com/photo/jogja/arsip/normal/2022/08/22/pengrajin-keris-foto-humas-pemda-diy-fnczt-gmpd.jpg"
       },
       {
         "title": "Buka Kongres Senapati Nusantara, Hasto: Indonesia Bangsa Besar dan Penguasa Iptek",
@@ -323,7 +328,8 @@ export const generatedGroups: GeneratedGroup[] = [
         "excerpt": "jogja.jpnn.com, YOGYAKARTA – Organisasi induk perkerisan di Indonesia, Senapati Nusantara menggelar Musyawarah Agung 2022 di Kabupaten Bantul, Daerah Istimewa Yogyakarta (DIY) pada Sabtu (17/9). Ribuan pencinta keris…",
         "url": "https://jogja.jpnn.com/jogja-terkini/5008/pencinta-keris-berkumpul-di-jogja-ada-yang-rela-jual-mobil",
         "date": "2022-09-17",
-        "sourceSlug": "jpnn"
+        "sourceSlug": "jpnn",
+        "image": "https://cloud.jpnn.com/photo/jatim/news/normal/2022/09/17/musyawarah-agung-senapati-nusantara-foto-antara-fpwn2-dgeq.jpg"
       },
       {
         "title": "Mengintip Pestanya Pencinta Keris Se-Indonesia Di Yogyakarta",
@@ -346,7 +352,8 @@ export const generatedGroups: GeneratedGroup[] = [
         "excerpt": "BANTUL – Musyawarah Agung Senapati Nusantara (MAS), organisasi induk pecinta keris Indonesia, yang digelar di Yogyakarta pada 16-18 September 2022 mengusulkan pada tanggal 25 November sebagai Hari Keris Nasional. Usulan…",
         "url": "https://voi.id/berita/210701/senapati-nusantara-usulkan-hari-keris-nasional-pada-25-november",
         "date": "2022-09-17",
-        "sourceSlug": "voi-id"
+        "sourceSlug": "voi-id",
+        "image": "https://imgsrv2.voi.id/3nLgvBYH5RhiTAMdCesjo9FgrKLR4UR_qKf74_j8As8/rs:fill/w:800/h:450/g:sm/wm:1:nowe:0:0:1/bG9jYWw6Ly8vcHVibGlzaGVycy8yMTA3MDEvMjAyMjA5MTcyMDUwLW1haW4uY3JvcHBlZF8xNjYzNDIyNjM4LmpwZw.jpg"
       },
       {
         "title": "Buka Kongres Senapati Nusantara, Sekjen SN: Indonesia Bangsa Besar Dan Kuasai Iptek",
@@ -471,7 +478,8 @@ export const generatedGroups: GeneratedGroup[] = [
         "excerpt": "Elshinta.com – Ketua Pelaksana Harian organisasi induk keris terbesar di Indonesia, Senapati Nusantara, Hidayat, di Yogyakarta, Sabtu mengatakan masa-masa kelam tiga tahun terakhir sirna dalam sekejap dengan adanya…",
         "url": "https://elshinta.com/news/279638/2022/09/17/pecinta-keris-berkumpul-di-yogyakarta-bangkitkan-perkerisan-nasional",
         "date": "2022-09-17",
-        "sourceSlug": "elshinta-com"
+        "sourceSlug": "elshinta-com",
+        "image": "https://elshinta.com/asset/upload/article/2022/september/4498_ELSHINTADOTCOM_20220918_img_20220917_152029.jpg"
       },
       {
         "title": "Ada Keris Berusia Ratusan Tahun Dipamerkan Di Yogyakarta, Keris Apa Itu?",
@@ -547,7 +555,8 @@ export const generatedGroups: GeneratedGroup[] = [
         "excerpt": "Liputan6.com, Jakarta – Sekretaris Jenderal Senapati Nusantara (SN) Hasto Kristiyanto mengatakan bahwa Indonesia merupakan bangsa besar dan memiliki sejarah penguasaan ilmu pengetahuan dan teknologi yang tinggi yang…",
         "url": "https://www.matain.id/article/10002/2022/0918/hasto-sebut-indonesia-bangsa-besar-dan-penguasa-iptek.html",
         "date": "2022-09-17",
-        "sourceSlug": "matain-id"
+        "sourceSlug": "matain-id",
+        "image": "https://www.matain.id/cdncontents/image/2022/0918/011793700_1663419524-800AE5E2-BF5C-45D5-85AF-D2AFE47D4C06_400.jpeg"
       },
       {
         "title": "Hasto: Indonesia Merupakan Bangsa Besar",
@@ -624,13 +633,15 @@ export const generatedGroups: GeneratedGroup[] = [
         "excerpt": "Bantul, LiraNews – Dr. Ir. Hasto Kristiyanto, MM, terpilih kembali menjadi Sekretaris Jenderal sekaligus Ketua formatur Serikat Nasional Pelestari Tosan Aji Nusantara (Senapati Nusantara/SN) berdasarkan Musyawarah Agung…",
         "url": "https://liranews.com/musyawarah-agung-senapati-nusantara-hasto-terima-keris-dari-sumenep-dan-pataka-dari-bontang/",
         "date": "2022-09-17",
-        "sourceSlug": "liranews-com"
+        "sourceSlug": "liranews-com",
+        "image": "https://liranews.com/wp-content/uploads/v1/uploads/IMG-20220918-WA0053.jpg"
       }
     ]
   },
   {
     "slug": "review-media-00",
-    "name": "Review Media",
+    "title": "Review Media",
+    "date": "2022-09-14",
     "categorySlug": "review-media",
     "items": [
       {
@@ -651,7 +662,8 @@ export const generatedGroups: GeneratedGroup[] = [
   },
   {
     "slug": "link-berita-sn",
-    "name": "Link Berita SN",
+    "title": "Link Berita SN",
+    "date": "2022-09-14",
     "categorySlug": "link-berita",
     "items": [
       {
@@ -703,7 +715,7 @@ export const generatedGroups: GeneratedGroup[] = [
         "sourceSlug": "tribunnews"
       },
       {
-        "title": "Attention Required! | Cloudflare",
+        "title": "Yogyakarta Siapkan Pameran Keris Terbesar Akhir Pekan Ini Ada Koleksi Langka Era Majapahit",
         "url": "https://travel.tempo.co/read/1634297/yogyakarta-siapkan-pameran-keris-terbesar-akhir-pekan-ini-ada-koleksi-langka-era-majapahit",
         "date": "2022-09-14",
         "sourceSlug": "tempo"
@@ -737,10 +749,11 @@ export const generatedGroups: GeneratedGroup[] = [
         "image": "https://assets.promediateknologi.id/crop/0x0:0x0/1200x0/webp/photo/2022/09/15/3951025304.jpg"
       },
       {
-        "title": "Just a moment...",
+        "title": "4 Agenda Penting tentang Keris pada Musyawarah Agung Senapati Nusantara",
         "url": "https://jogja.jpnn.com/jogja-terkini/4963/4-agenda-penting-tentang-keris-pada-musyawarah-agung-senapati-nusantara",
         "date": "2022-09-14",
-        "sourceSlug": "jpnn"
+        "sourceSlug": "jpnn",
+        "image": "https://cloud.jpnn.com/photo/jogja/arsip/normal/2022/08/22/pameran-keris-foto-humas-pemda-diy-amjrb-vhwy.jpg"
       },
       {
         "title": "Tiga tokoh nasional akan meramaikan Musyawarah Agung Senapati Nusantara",
@@ -771,7 +784,7 @@ export const generatedGroups: GeneratedGroup[] = [
         "image": "https://media.koran-jakarta.com/images/article/mahakarya-keris-naga-sasra-majapahit-yang-ratusan-tahun-hilang-diklaim-akan-muncul-pada-musyawarah-agung-senapati-nusantara-di-yogya-17-september-2022-220914174508.jpg"
       },
       {
-        "title": "Just a moment...",
+        "title": "Musyawarah Agung Senapati Nusantara Akan Dihadiri Tiga Tokoh Nasional Pecinta Keris",
         "url": "https://jateng.herald.id/2022/09/15/musyawarah-agung-senapati-nusantara-akan-dihadiri-tiga-tokoh-nasional-pecinta-keris/",
         "date": "2022-09-14",
         "sourceSlug": "herald-id"
@@ -783,17 +796,16 @@ export const generatedGroups: GeneratedGroup[] = [
         "sourceSlug": "jawapos"
       },
       {
-        "title": "Halaman tidak ditemukan - www.kliktimes.com",
+        "title": "Musyawarah Agung Senapati Nusantara",
         "url": "https://kliktimes.com/topik/musyawarah-agung-senapati-nusantara",
         "date": "2022-09-14",
         "sourceSlug": "kliktimes-com"
       },
       {
-        "title": "Page not found - Mercusuar.co",
+        "title": "Keris Naga Sasra Akan Ditampilkan Pada Pameran Keris Terbesar Se Indonesia Di Bantul",
         "url": "https://mercusuar.co/2022/09/15/keris-naga-sasra-akan-ditampilkan-pada-pameran-keris-terbesar-se-indonesia-di-bantul/",
         "date": "2022-09-14",
-        "sourceSlug": "mercusuar-co",
-        "image": "https://mercusuar.co/wp-content/uploads/2021/12/LOGO-MERCUSUAR-01-1-scaled-1-1024x1024.jpg"
+        "sourceSlug": "mercusuar-co"
       },
       {
         "title": "Yahoo Search - Pencarian Web",
@@ -808,7 +820,7 @@ export const generatedGroups: GeneratedGroup[] = [
         "sourceSlug": "msn-com"
       },
       {
-        "title": "Senapati Nusantara Akan Pamerkan Keris Era Majapahit Di Jogjakarta",
+        "title": "xnews.id",
         "url": "https://xnews.id/2022/09/14/kanal/news/senapati-nusantara-akan-pamerkan-keris-era-majapahit-di-jogjakarta/",
         "date": "2022-09-14",
         "sourceSlug": "xnews-id"
@@ -834,16 +846,18 @@ export const generatedGroups: GeneratedGroup[] = [
         "image": "https://nnc-media.netralnews.com/IMG-Netral-News-Admin-20-5E64U0FHPW.jpg"
       },
       {
-        "title": "Catat ! Musyawarah Agung Senapati Nusantara Pamerkan Keris dari Era Majapahit - warta jogja",
+        "title": "Catat ! Musyawarah Agung Senapati Nusantara Pamerkan Keris dari Era Majapahit",
         "url": "https://www.wartajogja.id/2022/09/catat-musyawarah-agung-senapati.html",
         "date": "2022-09-14",
-        "sourceSlug": "wartajogja-id"
+        "sourceSlug": "wartajogja-id",
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhM-ShTsInODZJ49hswhVv-Kc4BaEv_TsaAIe-nAVEFhKU0HfggafVLhlt_4sHtNPyXiM4ewZpsgfrpcbwoHpaBNYOODS9lOM-aHlFQf_x5hYwR2K868Og0w2034SEZbg0t_FVgTf18lCOH/w1200-h630-p-k-no-nu/20220914_112411_copy_1008x756.jpg"
       },
       {
-        "title": "Just a moment...",
+        "title": "Ingin Lihat Keris Era Majapahit? Yuk, Datang ke Pameran Senapati Nusantara di Jogja",
         "url": "https://jogja.jpnn.com/jogja-terkini/4960/ingin-lihat-keris-era-majapahit-yuk-datang-ke-pameran-senapati-nusantara-di-jogja",
         "date": "2022-09-14",
-        "sourceSlug": "jpnn"
+        "sourceSlug": "jpnn",
+        "image": "https://cloud.jpnn.com/photo/jatim/news/normal/2022/09/15/pemeran-keris-senapati-nusantara-foto-antara-0vtbz-nyjg.jpg"
       },
       {
         "title": "Pameran Keris Terbesar di Yogyakarta Akan Dihadiri Gibran Hingga Hasto Kristiyanto, Ada Koleksi Keris Naga Sasra Sampai Singo Barong » JOGLOSEMAR NEWS",
@@ -859,7 +873,7 @@ export const generatedGroups: GeneratedGroup[] = [
         "sourceSlug": "wisata-news"
       },
       {
-        "title": "404",
+        "title": "Ingin Melihat Keris Era Majapahit Ayo Datang Ke Pameran Senapati Nusantara Di Jogja",
         "url": "https://foxyclicks.com/ingin-melihat-keris-era-majapahit-ayo-datang-ke-pameran-senapati-nusantara-di-jogja/",
         "date": "2022-09-14",
         "sourceSlug": "foxyclicks-com"
@@ -926,7 +940,7 @@ export const generatedGroups: GeneratedGroup[] = [
         "image": "https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,f_auto,q_auto:best,w_640,h_336/g_south,l_og_media_partner_oxmuq0/co_rgb:ffffff,g_south_west,l_text:Heebo_20_bold:Konten%20Media%20Partner%0DPandangan%20Jogja,x_140,y_26/v1634025439/01gd5nkkfed6331d6vrv34fe0g.jpg"
       },
       {
-        "title": "Attention Required! | Cloudflare",
+        "title": "Ramainya Pameran Keris Di Yogyakarta Pelaku Perkerisan Kembali Bertemu",
         "url": "https://travel.tempo.co/read/1635459/ramainya-pameran-keris-di-yogyakarta-pelaku-perkerisan-kembali-bertemu",
         "date": "2022-09-16",
         "sourceSlug": "tempo"
@@ -939,10 +953,11 @@ export const generatedGroups: GeneratedGroup[] = [
         "image": "https://img.antaranews.com/cache/1200x800/2022/09/17/IMG_20220917_195357.jpg"
       },
       {
-        "title": "Just a moment...",
+        "title": "Dari Jogja, Senapati Nusantara Menyusun Perda Sumenep tentang Keris",
         "url": "https://jogja.jpnn.com/jogja-terkini/5011/dari-jogja-senapati-nusantara-menyusun-perda-sumenep-tentang-keris",
         "date": "2022-09-16",
-        "sourceSlug": "jpnn"
+        "sourceSlug": "jpnn",
+        "image": "https://cloud.jpnn.com/photo/jogja/arsip/normal/2022/08/22/pengrajin-keris-foto-humas-pemda-diy-fnczt-gmpd.jpg"
       },
       {
         "title": "Buka Kongres Senapati Nusantara, Hasto: Indonesia Bangsa Besar dan Penguasa Iptek",
@@ -959,16 +974,17 @@ export const generatedGroups: GeneratedGroup[] = [
         "image": "https://imgcdn.espos.id/@espos/images/2022/09/bursa-keris-yogyakarta.jpg"
       },
       {
-        "title": "Attention Required! | Cloudflare",
+        "title": "Sejarah Keris Sudah Tergambar Di Relief Candi Borobudur",
         "url": "https://travel.tempo.co/read/1635422/sejarah-keris-sudah-tergambar-di-relief-candi-borobudur",
         "date": "2022-09-16",
         "sourceSlug": "tempo"
       },
       {
-        "title": "Just a moment...",
+        "title": "Pencinta Keris Berkumpul di Jogja, Ada yang Rela Jual Mobil",
         "url": "https://jogja.jpnn.com/jogja-terkini/5008/pencinta-keris-berkumpul-di-jogja-ada-yang-rela-jual-mobil",
         "date": "2022-09-16",
-        "sourceSlug": "jpnn"
+        "sourceSlug": "jpnn",
+        "image": "https://cloud.jpnn.com/photo/jatim/news/normal/2022/09/17/musyawarah-agung-senapati-nusantara-foto-antara-fpwn2-dgeq.jpg"
       },
       {
         "title": "73 paguyuban berkumpul di Yogyakarta bangkitkan perkerisan nasional",
@@ -999,10 +1015,11 @@ export const generatedGroups: GeneratedGroup[] = [
         "image": "https://img.antaranews.com/cache/1200x800/2022/09/17/PhotoCollage_20220917_181513757.jpg"
       },
       {
-        "title": "Just a moment...",
+        "title": "Senapati Nusantara Usulkan Hari Keris Nasional pada 25 November",
         "url": "https://voi.id/berita/210701/senapati-nusantara-usulkan-hari-keris-nasional-pada-25-november",
         "date": "2022-09-16",
-        "sourceSlug": "voi-id"
+        "sourceSlug": "voi-id",
+        "image": "https://imgsrv2.voi.id/3nLgvBYH5RhiTAMdCesjo9FgrKLR4UR_qKf74_j8As8/rs:fill/w:800/h:450/g:sm/wm:1:nowe:0:0:1/bG9jYWw6Ly8vcHVibGlzaGVycy8yMTA3MDEvMjAyMjA5MTcyMDUwLW1haW4uY3JvcHBlZF8xNjYzNDIyNjM4LmpwZw.jpg"
       },
       {
         "title": "Buka Kongres Senapati Nusantara, Sekjen SN: Indonesia Bangsa Besar dan Kuasai Iptek |Republika Online",
@@ -1045,7 +1062,7 @@ export const generatedGroups: GeneratedGroup[] = [
         "sourceSlug": "indonesiakini-go-id"
       },
       {
-        "title": "Halaman tidak ditemukan - www.kliktimes.com",
+        "title": "Penyusunan Perda Rencana Strategis Pengembangan Keris Bergulir Dari Musyawarah Agung",
         "url": "https://kliktimes.com/news/53457/penyusunan-perda-rencana-strategis-pengembangan-keris-bergulir-dari-musyawarah-agung",
         "date": "2022-09-16",
         "sourceSlug": "kliktimes-com"
@@ -1076,7 +1093,7 @@ export const generatedGroups: GeneratedGroup[] = [
         "image": "https://media-origin.kompas.tv/library/image/content_article/article_img/20220914104058.jpg"
       },
       {
-        "title": "404 - Page not found - WISATA HITS",
+        "title": "Ramai Pameran Keris Di Yogyakarta Seniman Keris Bertemu Kembali 35019",
         "url": "https://wisatahits.blog/ramai-pameran-keris-di-yogyakarta-seniman-keris-bertemu-kembali-35019/",
         "date": "2022-09-16",
         "sourceSlug": "wisatahits-blog"
@@ -1088,7 +1105,7 @@ export const generatedGroups: GeneratedGroup[] = [
         "sourceSlug": "beritaterbaru-news"
       },
       {
-        "title": "404",
+        "title": "25 November Diusulkan Menjadi Hari Kerris Nasional",
         "url": "https://foxyclicks.com/25-november-diusulkan-menjadi-hari-kerris-nasional/",
         "date": "2022-09-16",
         "sourceSlug": "foxyclicks-com"
@@ -1140,7 +1157,8 @@ export const generatedGroups: GeneratedGroup[] = [
         "title": "Security Verification",
         "url": "https://elshinta.com/news/279638/2022/09/17/pecinta-keris-berkumpul-di-yogyakarta-bangkitkan-perkerisan-nasional",
         "date": "2022-09-16",
-        "sourceSlug": "elshinta-com"
+        "sourceSlug": "elshinta-com",
+        "image": "https://elshinta.com/asset/upload/article/2022/september/4498_ELSHINTADOTCOM_20220918_img_20220917_152029.jpg"
       },
       {
         "title": "Ada Keris Berusia Ratusan Tahun Dipamerkan di Yogyakarta, Keris Apa Itu? - Techverse.asia",
@@ -1191,13 +1209,13 @@ export const generatedGroups: GeneratedGroup[] = [
         "image": "https://static.republika.co.id/uploads/images/kanal_slide/dr-ir-hasto-kristiyanto-terpilih-kembali-menjadi-sekretaris-jenderal_220918100148-944.jpg"
       },
       {
-        "title": "404 Not Found",
+        "title": "Hasto Dorong Senapati Nusantara Lawan Perongrong Bangsa Lewat Kebudayaan",
         "url": "https://halloindo.com/jpnn/hasto-dorong-senapati-nusantara-lawan-perongrong-bangsa-lewat-kebudayaan",
         "date": "2022-09-16",
         "sourceSlug": "halloindo-com"
       },
       {
-        "title": "Page not found - Malay News Indonesia- Indonesian Newspaper",
+        "title": "Sejarah Membuktikan Bahwa Indonesia Merupakan Bangsa Besar Dan Penguasa Iptek",
         "url": "https://www.malay.news/indonesia/sejarah-membuktikan-bahwa-indonesia-merupakan-bangsa-besar-dan-penguasa-iptek/",
         "date": "2022-09-16",
         "sourceSlug": "malay-news"
@@ -1212,7 +1230,8 @@ export const generatedGroups: GeneratedGroup[] = [
         "title": "Hasto Sebut Indonesia Bangsa Besar dan Penguasa Iptek",
         "url": "https://www.matain.id/article/10002/2022/0918/hasto-sebut-indonesia-bangsa-besar-dan-penguasa-iptek.html",
         "date": "2022-09-16",
-        "sourceSlug": "matain-id"
+        "sourceSlug": "matain-id",
+        "image": "https://www.matain.id/cdncontents/image/2022/0918/011793700_1663419524-800AE5E2-BF5C-45D5-85AF-D2AFE47D4C06_400.jpeg"
       },
       {
         "title": "Hasto : Indonesia Merupakan Bangsa Besar",
@@ -1235,10 +1254,11 @@ export const generatedGroups: GeneratedGroup[] = [
         "sourceSlug": "tribunnews"
       },
       {
-        "title": "Just a moment...",
+        "title": "Musyawarah Agung Senapati Nusantara, Hasto Terima Keris dari Sumenep dan Pataka dari Bontang",
         "url": "https://liranews.com/musyawarah-agung-senapati-nusantara-hasto-terima-keris-dari-sumenep-dan-pataka-dari-bontang/",
         "date": "2022-09-16",
-        "sourceSlug": "liranews-com"
+        "sourceSlug": "liranews-com",
+        "image": "https://liranews.com/wp-content/uploads/v1/uploads/IMG-20220918-WA0053.jpg"
       },
       {
         "title": "Infografis 25 November Diusulkan sebagai Hari Keris Nasional",
@@ -1275,7 +1295,7 @@ export const generatedGroups: GeneratedGroup[] = [
         "image": "https://media.koran-jakarta.com/images/article/terpilih-lagi-jadi-sekjen-senapati-nusantara-hasto-kristiyanto-ingin-keris-bisa-menjaga-keutuhan-nkri-220919143002."
       },
       {
-        "title": "Error 404 Not Found - Koran Jakarta ®",
+        "title": "Senapati Nusantara Sukses Gelar Musyawarah Agung Di Yogya Yang Jadi Tonggak Kebangkitan Dunia Keris Nasional Paska",
         "url": "https://koran-jakarta.com/senapati-nusantara-sukses-gelar-musyawarah-agung-di-yogya-yang-jadi-tonggak-kebangkitan-dunia-keris-nasional-paska-",
         "date": "2022-09-16",
         "sourceSlug": "koran-jakarta"
@@ -1297,7 +1317,8 @@ export const generatedGroups: GeneratedGroup[] = [
   },
   {
     "slug": "link-berita-sumenep",
-    "name": "Link Berita Sumenep",
+    "title": "Link Berita Sumenep",
+    "date": "2022-10-14",
     "categorySlug": "link-berita",
     "items": [
       {
@@ -1330,40 +1351,41 @@ export const generatedGroups: GeneratedGroup[] = [
       {
         "title": "Sumenep Tuan Rumah Pelantikan Pengurus dan Pameran Senapati Nusantara |Republika Online",
         "url": "https://www.republika.co.id/berita/rjqsip313/sumenep-tuan-rumah-pelantikan-pengurus-dan-pameran-senapati-nusantara",
-        "date": "2022-10-14T19:00",
+        "date": "2022-10-14T19:00:00+07:00",
         "sourceSlug": "republika",
         "image": "https://static.republika.co.id/uploads/images/kanal_slide/sekretaris-jenderal-senapati-nusantara-periode-2022-2026-hasto_221014190955-406.jpg"
       },
       {
-        "title": "Halaman Tidak Ditemukan",
+        "title": "2",
         "url": "https://www.beritasatu.com/news/989265/gibran-rakabuming-dilantik-jadi-pengurus-senapati-nusantara/2/",
-        "date": "2022-10-14T21:00",
+        "date": "2022-10-14T21:00:00+07:00",
         "sourceSlug": "beritasatu"
       },
       {
         "title": "Pelantikan Senapati Nusantara Warnai Pameran Keris Sumenep - PortalMadura.com",
         "url": "https://portalmadura.com/pelantikan-senapati-nusantara-warnai-pameran-keris-sumenep-296849/",
-        "date": "2022-10-14T21:45",
+        "date": "2022-10-14T21:45:00+07:00",
         "sourceSlug": "portal-madura",
         "image": "https://portalmadura.com/wp-content/uploads/2026/07/portalmadura.webp"
       },
       {
-        "title": "Just a moment...",
+        "title": "Gibran Jadi Dewan Pembina Senapati Nusantara, Hasto Kristiyanto Jadi Sekjennya - Suara Merdeka Jakarta",
         "url": "https://jakarta.suaramerdeka.com/nasional/pr-1345196596/gibran-jadi-dewan-pembina-senapati-nusantara-hasto-kristiyanto-jadi-sekjennya",
-        "date": "2022-10-14T22:06",
-        "sourceSlug": "suara-merdeka"
+        "date": "2022-10-14T22:06:00+07:00",
+        "sourceSlug": "suara-merdeka",
+        "image": "https://assets.promediateknologi.id/crop/0x0:0x0/1200x0/webp/photo/2022/10/14/1634547145.jpg"
       },
       {
         "title": "Pemkab Sumenep Berupaya Kembangkan Keris Melalui Rencana Pembuatan Perda &#187; Seputar Madura",
         "url": "https://seputarmadura.com/sumenep/berita-sumenep/pemkab-sumenep-berupaya-kembangkan-keris-melalui-rencana-pembuatan-perda/",
-        "date": "2022-10-14T23:00",
+        "date": "2022-10-14T23:00:00+07:00",
         "sourceSlug": "seputarmadura-com",
         "image": "https://seputarmadura.com/wp-content/uploads/2022/10/IMG_20221014_225645.jpg"
       },
       {
         "title": "Gibran dan Hendrar Prihadi jadi Dewan Pembina Senapati Nusantara",
         "url": "https://www.antaranews.com/berita/3180453/gibran-dan-hendrar-prihadi-jadi-dewan-pembina-senapati-nusantara",
-        "date": "2022-10-15T00:15",
+        "date": "2022-10-15T00:15:00+07:00",
         "sourceSlug": "antara",
         "image": "https://img.antaranews.com/cache/1200x800/2022/10/14/IMG-20221014-WA0051.jpg"
       },
@@ -1375,16 +1397,17 @@ export const generatedGroups: GeneratedGroup[] = [
         "image": "https://realitarakyat.com/wp-content/uploads/2022/10/Sekretaris-Jenderal-Senapati-Nusantara-Hasto-Kristiyanto.webp"
       },
       {
-        "title": "404 : There's nothing here!",
+        "title": "Gibran Dan Hendrar Prihadi Jadi Dewan Pembina Senapati Nusantara",
         "url": "https://www.warganews.com/politik/gibran-dan-hendrar-prihadi-jadi-dewan-pembina-senapati-nusantara/",
         "date": "2022-10-15",
         "sourceSlug": "warganews-com"
       },
       {
-        "title": "403 Forbidden",
+        "title": "Senapati Nusantara: Sumenep Eksportir Keris Terbesar Indonesia | Kabar Madura",
         "url": "https://kabarmadura.id/senapati-nusantara-sumenep-eksportir-keris-terbesar-indonesia",
         "date": "2022-10-16",
-        "sourceSlug": "kabar-madura"
+        "sourceSlug": "kabar-madura",
+        "image": "https://i0.wp.com/kabarmadura.id/wp-content/uploads/2023/01/image_750x_634c02f75de4c.jpg"
       },
       {
         "title": "Sumenep Tuan Rumah Pelantikan Pengurus Dan Pameran Senapati Nusantara 11936",
@@ -1393,7 +1416,7 @@ export const generatedGroups: GeneratedGroup[] = [
         "sourceSlug": "karer-id"
       },
       {
-        "title": "404 - Page not found - WISATA HITS",
+        "title": "Sumenep Diakui Unesco Nusantara Usulkan Hari Keris 46995",
         "url": "https://wisatahits.blog/sumenep-diakui-unesco-nusantara-usulkan-hari-keris-46995/",
         "date": "2022-10-01",
         "sourceSlug": "wisatahits-blog"

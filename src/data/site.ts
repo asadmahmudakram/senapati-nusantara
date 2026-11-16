@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "Senapati Nusantara",
+  name: "SENAPATI NUSANTARA",
   fullName: "Serikat Nasional Pelestari Tosan Aji Nusantara",
   legalNumber: "SK Kemenkumham Nomor AHU.0015215.AH.01.07.2017",
   tagline: "Kabar terkini dari seluruh Nusantara",
