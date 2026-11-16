@@ -5,7 +5,6 @@ import { siteConfig } from "@/data/site";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
-
 const display = Bricolage_Grotesque({
   subsets: ["latin"],
   variable: "--font-display",
@@ -69,9 +68,9 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [
       {
-        url: "/images/placeholder.svg",
-        width: 1200,
-        height: 630,
+        url: "/images/logo-senapati.png",
+        width: 2040,
+        height: 770,
         alt: siteConfig.name,
       },
     ],
@@ -80,19 +79,23 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${siteConfig.name} – ${siteConfig.tagline}`,
     description: siteConfig.description,
-    images: ["/images/placeholder.svg"],
+    images: ["/images/logo-senapati.png"],
   },
   alternates: {
     canonical: "/",
   },
   icons: {
-    icon: "/images/placeholder.svg",
-    shortcut: "/images/placeholder.svg",
-    apple: "/images/placeholder.svg",
+    icon: "/images/icon-senapati.png",
+    shortcut: "/images/icon-senapati.png",
+    apple: "/images/icon-senapati.png",
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="id" className={`${display.variable} ${body.variable}`}>
       <body>
@@ -106,4 +109,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </body>
     </html>
   );
-};
+}
