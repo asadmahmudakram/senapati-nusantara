@@ -4,6 +4,7 @@ import "./globals.css";
 import { siteConfig } from "@/data/site";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import BackToTop from "@/components/layout/BackToTop";
 
 const display = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -97,7 +98,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id" className={`${display.variable} ${body.variable}`}>
+    <html
+      lang="id"
+      data-scroll-behavior="smooth"
+      className={`${display.variable} ${body.variable}`}
+    >
       <body>
         {/* <Splash /> */}
         <a className="skip-link" href="#konten">
@@ -106,6 +111,7 @@ export default function RootLayout({
         <Navbar />
         <main id="konten">{children}</main>
         <Footer />
+        <BackToTop />
       </body>
     </html>
   );

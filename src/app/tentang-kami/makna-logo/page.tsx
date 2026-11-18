@@ -56,11 +56,10 @@ export default function MaknaLogoPage() {
       <section aria-labelledby="runcing">
         <h2 id="runcing">Bentuk runcing ke bawah</h2>
         <p>
-          Bentuk runcing ke bawah melambangkan sebuah organisasi yang
-          diharapkan terus membumi dalam rangka mensosialisasikan, mewariskan,
-          menyebarkan ilmu serta pengetahuan Budaya Tosan Aji kepada
-          masyarakat umum, dengan mampu menorehkan edukasi dan pengetahuan
-          kepada khalayak umum.
+          Bentuk runcing ke bawah melambangkan sebuah organisasi yang diharapkan
+          terus membumi dalam rangka mensosialisasikan, mewariskan, menyebarkan
+          ilmu serta pengetahuan Budaya Tosan Aji kepada masyarakat umum, dengan
+          mampu menorehkan edukasi dan pengetahuan kepada khalayak umum.
         </p>
       </section>
 

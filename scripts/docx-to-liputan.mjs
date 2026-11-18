@@ -5,6 +5,7 @@ import path from "node:path";
 const dir = process.argv[2];
 const WITH_IMAGES = process.argv.includes("--images"); // ambil gambar tiap link
 const RETRY = process.argv.includes("--retry"); // coba lagi link yang sebelumnya gagal
+const USE_MICROLINK = process.argv.includes("--microlink");
 if (!dir) {
   console.error(
     'Pakai: node scripts/docx-to-liputan.mjs "C:/folder-docx" [--images] [--retry]',
@@ -390,6 +391,56 @@ for (const cfg of FILES) {
       } else if (!(it.url in imageCache)) {
         imageCache[it.url] = null; // tandai sudah dicoba
       }
+    }
+    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+    let microlinkBlocked = false;
+    let microlinkChain = Promise.resolve();
+
+    // Satu per satu dan berjeda, supaya tidak kena batas laju
+    function microlinkImage(url) {
+      const run = async () => {
+        if (microlinkBlocked) return undefined;
+        try {
+          const res = await fetch(
+            `https://api.microlink.io/?url=${encodeURIComponent(url)}`,
+            { signal: AbortSignal.timeout(25000) },
+          );
+          if (res.status === 429) {
+            microlinkBlocked = true;
+            console.warn(
+              "Batas harian Microlink tercapai, berhenti memakainya.",
+            );
+            return undefined;
+          }
+          const json = await res.json();
+          await sleep(800);
+          return json?.status === "success"
+            ? absUrl(json.data?.image?.url, url)
+            : undefined;
+        } catch {
+          return undefined;
+        }
+      };
+      const p = microlinkChain.then(run);
+      microlinkChain = p.catch(() => {});
+      return p;
+    }
+
+    // Satu link hanya diproses sekali per jalan, walau muncul di beberapa file
+    const metaMemo = new Map();
+    function getMetaOnce(url) {
+      if (!metaMemo.has(url)) {
+        metaMemo.set(
+          url,
+          (async () => {
+            const meta = await getMeta(url);
+            if (!meta.image && USE_MICROLINK)
+              meta.image = await microlinkImage(url);
+            return meta;
+          })(),
+        );
+      }
+      return metaMemo.get(url);
     }
   });
 
