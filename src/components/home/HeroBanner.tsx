@@ -10,7 +10,7 @@ type HeroBannerProps = {
 
 export default function HeroBanner({
   src = "/images/banner.png",
-  alt = "Senapati Nusantara",
+  alt = "SENAPATI NUSANTARA",
   title,
   text,
   cta,

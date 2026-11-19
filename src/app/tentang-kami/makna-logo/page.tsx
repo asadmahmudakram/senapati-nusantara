@@ -28,9 +28,9 @@ export default function MaknaLogoPage() {
       }
     >
       <figure className="logo-figure">
-        {/* Letakkan berkas logo di public/images/logo-senapati-nusantara.png */}
+        {/* Letakkan berkas logo di public/images/LOGO-SN.png */}
         <Image
-          src="/images/logo-senapati-nusantara.png"
+          src="/images/LOGO-SN.png"
           alt="Logo Senapati Nusantara: keris dan warangka yang dibentuk dari tangan yang menggenggam keris"
           width={360}
           height={360}

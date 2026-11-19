@@ -26,7 +26,7 @@ const meta = metaJson as Meta;
 
 /** Kategori untuk item manual yang tidak ada di dokumen Word. */
 const MANUAL = { slug: "liputan-manual", categorySlug: "budaya" };
-const FALLBACK_TITLE = "Liputan Senapati Nusantara";
+const FALLBACK_TITLE = "Liputan SENAPATI NUSANTARA";
 
 /* ------------------------------------------------------------------ */
 /* Pembersih teks                                                       */
@@ -191,7 +191,7 @@ function fallbackExcerpt(date: string): string {
   if (d >= "2022-09-16" && d <= "2022-09-30")
     return "Liputan pembukaan dan hasil Musyawarah Agung Senapati (MAS) #2 di Bantul, Yogyakarta.";
   if (d >= "2022-10-01" && d <= "2022-10-31")
-    return "Liputan pelantikan pengurus dan pameran Senapati Nusantara di Sumenep, Madura.";
+    return "Liputan pelantikan pengurus dan pameran SENAPATI NUSANTARA di Sumenep, Madura.";
   return "";
 }
 

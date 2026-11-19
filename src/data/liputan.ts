@@ -14,7 +14,7 @@ const GROUP_META: Record<string, { title: string; date: string }> = {
   "review-media-01": { title: "Jelang Musyawarah Agung Senapati (MAS) #2", date: "2022-09-14" },
   "review-media-02": { title: "Pembukaan Musyawarah Agung Senapati (MAS) #2", date: "2022-09-17" },
   "review-media-00": { title: "Review Media", date: "2022-09-14" },
-  "link-berita-sn": { title: "Link Berita Senapati Nusantara", date: "2022-09-14" },
+  "link-berita-sn": { title: "Link Berita SENAPATI NUSANTARA", date: "2022-09-14" },
   "link-berita-sumenep": { title: "Pelantikan Pengurus dan Pameran di Sumenep", date: "2022-10-14" },
 };
 

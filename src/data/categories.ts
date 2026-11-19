@@ -5,13 +5,13 @@ export const categories: Category[] = [
     slug: "review-media",
     name: "Review Media",
     description:
-      "Ulasan dan liputan media tentang kegiatan Senapati Nusantara.",
+      "Ulasan dan liputan media tentang kegiatan SENAPATI NUSANTARA.",
   },
   {
     slug: "link-berita",
     name: "Link Berita",
     description:
-      "Tautan berita tentang Senapati Nusantara dari berbagai media.",
+      "Tautan berita tentang SENAPATI NUSANTARA dari berbagai media.",
   },
 ];
 

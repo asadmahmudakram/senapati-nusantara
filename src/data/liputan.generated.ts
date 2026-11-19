@@ -184,7 +184,7 @@ export const generatedGroups: LiputanGroup[] = [
         "sourceSlug": "disulsel-com"
       },
       {
-        "title": "Musyawarah Agung Senapati Nusantara: Keris Nusantara Untuk Indonesia Bangkit",
+        "title": "Musyawarah Agung SENAPATI NUSANTARA: Keris Nusantara Untuk Indonesia Bangkit",
         "excerpt": "BANTUL, NETRALNEWS.COM – Tiga tokoh politik Indonesia yang juga pecinta keris akan meramaikan Musyawarah Agung Senapati Nusantara, induk organisasi dari 73 paguyuban keris seluruh Indonesia, yang akan diadakan pada 17…",
         "url": "https://www.netralnews.com/musyawarah-agung-senapati-nusantara-keris-nusantara-untuk-indonesia-bangkit/d0FkdG1oZ0c4ZXY4TDg1T1dJbldtZz09",
         "date": "2022-09-14",

@@ -11,7 +11,7 @@ export const manualItems: LiputanItem[] = [
   {
     sourceSlug: "antara",
     date: "2022-09-14",
-    title: "Senapati Nusantara akan pamerkan keris era Majapahit di Yogyakarta",
+    title: "SENAPATI NUSANTARA akan pamerkan keris era Majapahit di Yogyakarta",
     image:
       "https://img.antaranews.com/cache/1200x800/2022/09/14/IMG_20220914_150746.jpg.webp",
     url: "https://www.antaranews.com/berita/3117033/senapati-nusantara-akan-pamerkan-keris-era-majapahit-di-yogyakarta",
@@ -20,13 +20,13 @@ export const manualItems: LiputanItem[] = [
     sourceSlug: "detik",
     date: "2022-09-14",
     title:
-      "Senapati Nusantara Gelar Pameran-Bursa Keris di Bantul 16-18 September",
+      "SENAPATI NUSANTARA Gelar Pameran-Bursa Keris di Bantul 16-18 September",
     url: "https://www.detik.com/jateng/budaya/d-6291373/senapati-nusantara-gelar-pameran-bursa-keris-di-bantul-16-18-september",
   },
   {
     sourceSlug: "detik",
     date: "2022-09-14",
-    title: "Senapati Nusantara Pertanyakan Usulan Hari Keris Nasional Mandek",
+    title: "SENAPATI NUSANTARA Pertanyakan Usulan Hari Keris Nasional Mandek",
     image:
       "https://akcdn.detik.net.id/community/media/visual/2022/09/14/jumpa-pers-serikat-nasional-pelestari-tosan-aji-nusantara-senapati-nusantara-yang-akan-menggelar-pameran-di-bantul-rabu-149202_169.jpeg?w=700&q=90",
     url: "https://www.detik.com/jateng/budaya/d-6291433/senapati-nusantara-pertanyakan-usulan-hari-keris-nasional-mandek",
@@ -58,7 +58,7 @@ export const manualItems: LiputanItem[] = [
     sourceSlug: "tribunnews",
     date: "2022-09-14",
     title:
-      "Senapati Nusantara Akan Gelar Pameran dan Bursa Tosan Aji, Hadirkan Keris Langka Era Majapahit",
+      "SENAPATI NUSANTARA Akan Gelar Pameran dan Bursa Tosan Aji, Hadirkan Keris Langka Era Majapahit",
     url: "https://jogja.tribunnews.com/2022/09/14/senapati-nusantara-akan-gelar-pameran-dan-bursa-tosan-aji-hadirkan-keris-langka-era-majapahit",
   },
   {
@@ -72,7 +72,7 @@ export const manualItems: LiputanItem[] = [
     sourceSlug: "kr-jogja",
     date: "2022-09-14",
     title:
-      "Senapati Nusantara Gelar Pameran Keris Miliaran Rupiah dari Toraja di Yogyakarta",
+      "SENAPATI NUSANTARA Gelar Pameran Keris Miliaran Rupiah dari Toraja di Yogyakarta",
     url: "https://www.krjogja.com/berita-lokal/read/472106/senapati-nusantara-gelar-pameran-keris-miliaran-rupiah-dari-toraja-di-yogyakarta",
   },
   {
@@ -86,14 +86,14 @@ export const manualItems: LiputanItem[] = [
     sourceSlug: "harian-merapi",
     date: "2022-09-14",
     title:
-      "Musyawarah Agung Senapati Nusantara gelar kongres, pameran dan bursa tosan aji di Jogja mulai Jumat",
+      "Musyawarah Agung SENAPATI NUSANTARA gelar kongres, pameran dan bursa tosan aji di Jogja mulai Jumat",
     url: "https://www.harianmerapi.com/kearifan/pr-404735898/musyawarah-agung-senapati-nusantara-gelar-kongres-pameran-dan-bursa-tosan-aji-di-jogja-mulai-jumat",
   },
   {
     sourceSlug: "jpnn",
     date: "2022-09-14",
     title:
-      "4 Agenda Penting tentang Keris pada Musyawarah Agung Senapati Nusantara",
+      "4 Agenda Penting tentang Keris pada Musyawarah Agung SENAPATI NUSANTARA",
     url: "https://jogja.jpnn.com/jogja-terkini/4963/4-agenda-penting-tentang-keris-pada-musyawarah-agung-senapati-nusantara",
   },
   {
@@ -107,13 +107,13 @@ export const manualItems: LiputanItem[] = [
     sourceSlug: "koran-jakarta",
     date: "2022-09-14",
     title:
-      "Hasto Kristiyanto, Gibran Rakabuming, Anak Pramono Anung dan GKR Mangkubumi Dipastikan Ramaikan Musyawarah Agung Senapati Nusantara 17 September di Yogya",
+      "Hasto Kristiyanto, Gibran Rakabuming, Anak Pramono Anung dan GKR Mangkubumi Dipastikan Ramaikan Musyawarah Agung SENAPATI NUSANTARA 17 September di Yogya",
     url: "https://koran-jakarta.com/hasto-kristiyanto-gibran-rakabuming-anak-pramono-anung-dan-gkr-mangkubumi-dipastikan-ramaikan-musyawarah-agung-senapati-nusantara-17-september-di-yogya?page=all",
   },
   {
     sourceSlug: "jawapos",
     date: "2022-09-14",
-    title: "Senapati Nusantara Akan Pamerkan Keris Era Majapahit di Jogjakarta",
+    title: "SENAPATI NUSANTARA Akan Pamerkan Keris Era Majapahit di Jogjakarta",
     url: "https://www.jawapos.com/jpg-today/14/09/2022/senapati-nusantara-akan-pamerkan-keris-era-majapahit-di-jogjakarta/",
   },
 
@@ -122,7 +122,7 @@ export const manualItems: LiputanItem[] = [
     sourceSlug: "kumparan",
     date: "2022-09-17",
     title:
-      "Senapati Nusantara: 17 September 2022 Tonggak Kebangkitan Dunia Keris Nasional",
+      "SENAPATI NUSANTARA: 17 September 2022 Tonggak Kebangkitan Dunia Keris Nasional",
     url: "https://kumparan.com/pandangan-jogja/senapati-nusantara-17-september-2022-tonggak-kebangkitan-dunia-keris-nasional-1ysR8MMF8pg/1",
   },
   {
@@ -155,21 +155,21 @@ export const manualItems: LiputanItem[] = [
   {
     sourceSlug: "antara",
     date: "2022-09-17",
-    title: "Senapati Nusantara Usulkan 25 November Jadi Hari Keris Nasional",
+    title: "SENAPATI NUSANTARA Usulkan 25 November Jadi Hari Keris Nasional",
     url: "https://www.antaranews.com/berita/3123525/senapati-nusantara-usulkan-25-november-jadi-hari-keris-nasional",
   },
   {
     sourceSlug: "jpnn",
     date: "2022-09-17",
     title:
-      "Dari Jogja, Senapati Nusantara Menyusun Perda Sumenep tentang Keris",
+      "Dari Jogja, SENAPATI NUSANTARA Menyusun Perda Sumenep tentang Keris",
     url: "https://jogja.jpnn.com/jogja-terkini/5011/dari-jogja-senapati-nusantara-menyusun-perda-sumenep-tentang-keris",
   },
   {
     sourceSlug: "sindonews",
     date: "2022-09-17",
     title:
-      "Buka Kongres Senapati Nusantara, Hasto: Indonesia Bangsa Besar dan Penguasa Iptek",
+      "Buka Kongres SENAPATI NUSANTARA, Hasto: Indonesia Bangsa Besar dan Penguasa Iptek",
     url: "https://nasional.sindonews.com/read/887879/12/buka-kongres-senapati-nusantara-hasto-indonesia-bangsa-besar-dan-penguasa-iptek-1663412983",
   },
   {
@@ -189,7 +189,7 @@ export const manualItems: LiputanItem[] = [
     sourceSlug: "republika",
     date: "2022-09-17",
     title:
-      "Buka Kongres Senapati Nusantara, Sekjen SN: Indonesia Bangsa Besar dan Kuasai Iptek",
+      "Buka Kongres SENAPATI NUSANTARA, Sekjen SN: Indonesia Bangsa Besar dan Kuasai Iptek",
     url: "https://www.republika.co.id/berita/ricn1b313/buka-kongres-senapati-nusantara-sekjen-sn-indonesia-bangsa-besar-dan-kuasai-iptek",
   },
   {
@@ -202,7 +202,7 @@ export const manualItems: LiputanItem[] = [
     sourceSlug: "tribunnews",
     date: "2022-09-18",
     title:
-      "Kembali Terpilih Jadi Sekjen Senapati Nusantara, Hasto Kristiyanto Ingin Tosan Aji Mendunia",
+      "Kembali Terpilih Jadi Sekjen SENAPATI NUSANTARA, Hasto Kristiyanto Ingin Tosan Aji Mendunia",
     url: "https://www.tribunnews.com/nasional/2022/09/18/kembali-terpilih-jadi-sekjen-senapati-nusantara-hasto-kristiyanto-ingin-tosan-aji-mendunia",
   },
   {
@@ -229,39 +229,39 @@ export const manualItems: LiputanItem[] = [
   {
     sourceSlug: "pemkab-sumenep",
     date: "2022-10-14",
-    title: "Senapati Nusantara terus perjuangkan Hari Keris Nasional",
+    title: "SENAPATI NUSANTARA terus perjuangkan Hari Keris Nasional",
     url: "https://sumenepkab.go.id/berita/baca/senapati-nusantara-terus-perjuangkan-hari-keris-nasional",
   },
   {
     sourceSlug: "republika",
     date: "2022-10-14",
     title:
-      "Sumenep tuan rumah pelantikan pengurus dan pameran Senapati Nusantara",
+      "Sumenep tuan rumah pelantikan pengurus dan pameran SENAPATI NUSANTARA",
     url: "https://www.republika.co.id/berita/rjqsip313/sumenep-tuan-rumah-pelantikan-pengurus-dan-pameran-senapati-nusantara",
   },
   {
     sourceSlug: "beritasatu",
     date: "2022-10-14",
-    title: "Gibran Rakabuming dilantik jadi pengurus Senapati Nusantara",
+    title: "Gibran Rakabuming dilantik jadi pengurus SENAPATI NUSANTARA",
     url: "https://www.beritasatu.com/news/989265/gibran-rakabuming-dilantik-jadi-pengurus-senapati-nusantara/2/",
   },
   {
     sourceSlug: "portal-madura",
     date: "2022-10-14",
-    title: "Pelantikan Senapati Nusantara warnai pameran keris Sumenep",
+    title: "Pelantikan SENAPATI NUSANTARA warnai pameran keris Sumenep",
     url: "https://portalmadura.com/pelantikan-senapati-nusantara-warnai-pameran-keris-sumenep-296849/",
   },
   {
     sourceSlug: "suara-merdeka",
     date: "2022-10-14",
     title:
-      "Gibran jadi dewan pembina Senapati Nusantara, Hasto Kristiyanto jadi sekjennya",
+      "Gibran jadi dewan pembina SENAPATI NUSANTARA, Hasto Kristiyanto jadi sekjennya",
     url: "https://jakarta.suaramerdeka.com/nasional/pr-1345196596/gibran-jadi-dewan-pembina-senapati-nusantara-hasto-kristiyanto-jadi-sekjennya",
   },
   {
     sourceSlug: "antara",
     date: "2022-10-15",
-    title: "Gibran dan Hendrar Prihadi jadi dewan pembina Senapati Nusantara",
+    title: "Gibran dan Hendrar Prihadi jadi dewan pembina SENAPATI NUSANTARA",
     url: "https://www.antaranews.com/berita/3180453/gibran-dan-hendrar-prihadi-jadi-dewan-pembina-senapati-nusantara",
   },
   {
@@ -273,7 +273,7 @@ export const manualItems: LiputanItem[] = [
   {
     sourceSlug: "kabar-madura",
     date: "2022-10-16",
-    title: "Senapati Nusantara: Sumenep eksportir keris terbesar Indonesia",
+    title: "SENAPATI NUSANTARA: Sumenep eksportir keris terbesar Indonesia",
     url: "https://kabarmadura.id/senapati-nusantara-sumenep-eksportir-keris-terbesar-indonesia",
   },
 ];

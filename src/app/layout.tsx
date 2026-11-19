@@ -1,20 +1,29 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Public_Sans } from "next/font/google";
 import "./globals.css";
+import localFont from "next/font/local";
 import { siteConfig } from "@/data/site";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import BackToTop from "@/components/layout/BackToTop";
 
-const display = Bricolage_Grotesque({
-  subsets: ["latin"],
+const display = localFont({
+  src: "./fonts/Hawkes-MediumNarrow.ttf",
   variable: "--font-display",
+  weight: "500",
   display: "swap",
 });
 
-const body = Public_Sans({
-  subsets: ["latin"],
+const accent = localFont({
+  src: "./fonts/HaydonBrush_PERSONAL_USE.ttf",
+  variable: "--font-accent",
+  weight: "400",
+  display: "swap",
+});
+
+const body = localFont({
+  src: "./fonts/PublicSans-Variable.ttf",
   variable: "--font-body",
+  weight: "100 900",
   display: "swap",
 });
 
@@ -69,7 +78,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [
       {
-        url: "/images/logo-senapati.png",
+        url: "/images/ICON-SN.png",
         width: 2040,
         height: 770,
         alt: siteConfig.name,
@@ -80,15 +89,15 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${siteConfig.name} – ${siteConfig.tagline}`,
     description: siteConfig.description,
-    images: ["/images/logo-senapati.png"],
+    images: ["/images/ICON-SN.png"],
   },
   alternates: {
     canonical: "/",
   },
   icons: {
-    icon: "/images/icon-senapati.png",
-    shortcut: "/images/icon-senapati.png",
-    apple: "/images/icon-senapati.png",
+    icon: "/images/ICON-SN.png",
+    shortcut: "/images/ICON-SN.png",
+    apple: "/images/ICON-SN.png",
   },
 };
 
@@ -101,7 +110,7 @@ export default function RootLayout({
     <html
       lang="id"
       data-scroll-behavior="smooth"
-      className={`${display.variable} ${body.variable}`}
+      className={`${display.variable} ${accent.variable} ${body.variable}`}
     >
       <body>
         {/* <Splash /> */}

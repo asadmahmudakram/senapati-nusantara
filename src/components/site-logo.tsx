@@ -10,7 +10,7 @@ export function SiteLogo({ className = "" }: { className?: string }) {
       className={`brand ${className}`.trim()}
     >
       <Image
-        src="/images/logo-senapati.png"
+        src="/images/header-SN.png"
         alt={siteConfig.name}
         width={2040}
         height={770}

@@ -4,14 +4,14 @@ export const agenda: Agenda[] = [
   {
     id: "mas-sn-3-2026",
     judul:
-      "Musyawarah Agung Senapati Nusantara (MAS-SN#3): Kongres, Pagelaran, dan Bursa Tosan Aji",
+      "Musyawarah Agung SENAPATI NUSANTARA (MAS-SN#3): Kongres, Pagelaran, dan Bursa Tosan Aji",
     tema: "Keris untuk Peradaban: Menyatukan Warisan Dunia, Meneguhkan Jati Diri Bangsa",
     mulai: "2026-11-27",
     selesai: "2026-11-29",
     keterangan:
       "Kongres pada Jumat, 27 November 2026. Sarasehan Tosan Aji Nasional pada Sabtu, 28 November 2026 pukul 16.00–17.30 WIB. Pagelaran dan Bursa dibuka setiap hari pukul 09.00–21.00 WIB.",
     menampilkan:
-      "Pagelaran 125 bilah keris dari kolektor, anggota Pataji, dan para empu, serta Bursa dengan 175 meja pelapak anggota Senapati Nusantara dari seluruh Indonesia.",
+      "Pagelaran 125 bilah keris dari kolektor, anggota Pataji, dan para empu, serta Bursa dengan 175 meja pelapak anggota SENAPATI NUSANTARA dari seluruh Indonesia.",
     lokasi: {
       tempat: "Gedung Ali Sadikin, Taman Ismail Marzuki",
       alamat: "Jl. Cikini Raya, No. 73, Cikini, Menteng, Jakarta Pusat",

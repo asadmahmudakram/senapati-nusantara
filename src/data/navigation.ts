@@ -21,26 +21,31 @@ function categoryNav(parentSlug?: string): NavItem[] {
 }
 
 export const mainNav: NavItem[] = [
-  { label: "Beranda", href: "/" },
+  { label: "BERANDA", href: "/" },
   {
-    label: "Tentang Kami",
-
+    label: "TENTANG KAMI",
     children: [
-      { label: "Profile Senapati Nusantara", href: "/tentang-kami/profile" },
-      { label: "Makna Logo", href: "/tentang-kami/makna-logo" },
+      { label: "PROFILE SENAPATI NUSANTARA", href: "/tentang-kami/profile" },
+      { label: "MAKNA LOGO", href: "/tentang-kami/makna-logo" },
     ],
   },
   {
-    label: "Berita",
-
+    label: "BERITA",
     children: [
-      { label: "Semua Berita", href: "/berita" },
-      { label: "Review Media", href: "/kategori/review-media" },
-      { label: "Link Berita", href: "/kategori/link-berita" },
+      { label: "SEMUA BERITA", href: "/berita" },
+      { label: "REVIEW MEDIA", href: "/kategori/review-media" },
+      { label: "LINK BERITA", href: "/kategori/link-berita" },
     ],
   },
-  { label: "Agenda", href: "/agenda" },
-  { label: "Kontak Kami", href: "/kontak-kami" },
+  {
+    label: "GALERI",
+    children: [
+      { label: "VIDEO SENAPATI NUSANTARA", href: "/galeri/video" },
+      { label: "GALERI FOTO-FOTO", href: "/galeri/foto" },
+    ],
+  },
+  { label: "AGENDA", href: "/agenda" },
+  { label: "KONTAK KAMI", href: "/kontak-kami" },
 ];
 
 export const footerNav: { label: string; href: string }[] = [
@@ -49,7 +54,7 @@ export const footerNav: { label: string; href: string }[] = [
 ];
 
 export const socialLinks: { label: string; href: string }[] = [
-  { label: "YouTube", href: "https://www.youtube.com/@senapatinusantara" },
+  { label: "YouTube", href: "https://www.youtube.com/@senapatinusantara8328" },
   { label: "Facebook", href: "https://www.facebook.com/senapatinusantara" },
   { label: "Instagram", href: "https://www.instagram.com/senapatinusantara" },
 ];
