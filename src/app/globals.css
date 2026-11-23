@@ -157,6 +157,66 @@ h3 {
   border-radius: 0.75rem;
 }
 
+/* ===== Halaman makna logo ===== */
+.logo-figure {
+  width: min(100%, 300px);
+  margin: 0 auto 2.5rem;
+  overflow: hidden;
+  border: 1px solid var(--nav-line);
+  border-radius: 1rem;
+  background: var(--maroon);
+  box-shadow: 0 10px 30px rgba(63, 10, 11, 0.22);
+}
+.logo-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.logo-figure figcaption {
+  padding: 0.7rem 1rem;
+  background: var(--maroon-deep);
+  color: var(--gold);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Bagian-bagian teks */
+.page--logo .page__content section + section {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+.page--logo .page__content h2 {
+  margin: 0 0 0.75rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.3rem, 2.4vw, 1.6rem);
+}
+.page--logo .page__content h2::before {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: 3px;
+  margin-bottom: 0.6rem;
+  background: var(--gold);
+}
+.page--logo .page__content .callout {
+  margin: 1rem 0 0;
+  padding: 1rem 1.25rem;
+  border-left: 4px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  background: var(--paper);
+  text-align: left;
+}
+
+/* HP: daftar isi disembunyikan, halamannya hanya tiga bagian pendek */
+@media (max-width: 959px) {
+  .page--logo .page__sidebar {
+    display: none;
+  }
+}
+
 /* ===== Paginasi (tambahkan di akhir src/app/globals.css) ===== */
 .pager {
   align-items: center;
@@ -998,7 +1058,16 @@ a.pager__btn:hover {
 /* Di halaman dengan sidebar, paragraf mengisi kolom penuh */
 .page__content.prose p,
 .page__content.prose li {
-  max-width: none;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+@media (min-width: 700px) {
+  .page__content.prose p,
+  .page__content.prose li {
+    text-align: justify;
+    text-justify: inter-word;
+  }
 }
 
 .btn {
