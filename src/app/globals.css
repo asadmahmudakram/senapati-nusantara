@@ -212,7 +212,9 @@ h3 {
 
 /* HP: daftar isi disembunyikan, halamannya hanya tiga bagian pendek */
 @media (max-width: 959px) {
-  .page--logo .page__sidebar { display: none; }
+  .page--logo .page__sidebar {
+    display: none;
+  }
 }
 
 /* ===== Paginasi (tambahkan di akhir src/app/globals.css) ===== */
@@ -927,6 +929,13 @@ a.pager__btn:hover {
 .main-nav .sub .sub a {
   font-size: 0.9rem;
   color: var(--slate);
+}
+/* Dipakai setelah tautan dropdown diklik */
+.main-nav .nav-top.is-closed > .sub {
+  display: none !important;
+}
+.nav-top.has-sub.is-closed .nav-chevron {
+  transform: none !important;
 }
 
 /* Pencarian */

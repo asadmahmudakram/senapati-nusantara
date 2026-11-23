@@ -3,6 +3,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import { siteConfig } from "@/data/site";
 import Navbar from "@/components/layout/Navbar";
+import NavMenuBehavior from "@/components/layout/NavMenuBehavior";
 import Footer from "@/components/layout/Footer";
 import BackToTop from "@/components/layout/BackToTop";
 
@@ -120,6 +121,7 @@ export default function RootLayout({
         <Navbar />
         <main id="konten">{children}</main>
         <Footer />
+        <NavMenuBehavior />
         <BackToTop />
       </body>
     </html>
