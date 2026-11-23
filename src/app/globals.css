@@ -212,9 +212,7 @@ h3 {
 
 /* HP: daftar isi disembunyikan, halamannya hanya tiga bagian pendek */
 @media (max-width: 959px) {
-  .page--logo .page__sidebar {
-    display: none;
-  }
+  .page--logo .page__sidebar { display: none; }
 }
 
 /* ===== Paginasi (tambahkan di akhir src/app/globals.css) ===== */
@@ -1058,16 +1056,7 @@ a.pager__btn:hover {
 /* Di halaman dengan sidebar, paragraf mengisi kolom penuh */
 .page__content.prose p,
 .page__content.prose li {
-  -webkit-hyphens: auto;
-  hyphens: auto;
-  overflow-wrap: break-word;
-}
-@media (min-width: 700px) {
-  .page__content.prose p,
-  .page__content.prose li {
-    text-align: justify;
-    text-justify: inter-word;
-  }
+  max-width: none;
 }
 
 .btn {
